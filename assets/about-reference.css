@@ -46,7 +46,8 @@
 .about-ref-vision > .about-ref-icon, .about-ref-values > .about-ref-icon { width: 6.25cqw; height: 5.859375cqw; }
 .about-ref-values { border: 0; padding-right: 0; }
 .about-ref-values ul { list-style: none; margin: .9765625cqw 0 0 -2.34375cqw; padding: 0; display: grid; gap: .5859375cqw; }
-.about-ref-values li { display: flex; align-items: start; gap: .5859375cqw; font-size: 1.26953125cqw; line-height: 1.2; letter-spacing: -.04em; white-space: nowrap; }
+.about-ref-values li { display: flex; align-items: start; gap: .5859375cqw; font-size: 1.26953125cqw; line-height: 1.2; letter-spacing: -.04em; white-space: normal; }
+.about-ref-values li > span { min-width: 0; }
 .about-ref-check { flex: 0 0 auto; width: 1.7578125cqw; height: 1.7578125cqw; color: #f87500; }
 
 .about-ref-stats { height: 13.28125cqw; padding-inline: 2.34375cqw; position: relative; isolation: isolate; }
