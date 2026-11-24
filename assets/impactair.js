@@ -2,7 +2,7 @@
 
 const menu = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#site-nav');
-const more = navigation?.querySelector('.more');
+const moreMenus = [...(navigation?.querySelectorAll('.more') || [])];
 const compact = matchMedia('(max-width: 960px)');
 
 function setMenu(expanded) {
@@ -15,26 +15,29 @@ function setMenu(expanded) {
 function updateNavigation() {
   if (!menu) return;
   menu.hidden = !compact.matches;
-  if (more) more.open = false;
+  for (const more of moreMenus) more.open = false;
   setMenu(!compact.matches);
 }
 
 menu?.addEventListener('click', () => {
   const expanded = menu.getAttribute('aria-expanded') !== 'true';
   setMenu(expanded);
-  if (!expanded && more) more.open = false;
+  if (!expanded) for (const more of moreMenus) more.open = false;
 });
 compact.addEventListener('change', updateNavigation);
 updateNavigation();
 
 document.addEventListener('click', (event) => {
-  if (more?.open && !more.contains(event.target)) more.open = false;
+  for (const more of moreMenus) {
+    if (more.open && !more.contains(event.target)) more.open = false;
+  }
   if (compact.matches && navigation && menu && !navigation.contains(event.target) && !menu.contains(event.target)) setMenu(false);
 });
 
 document.addEventListener('keydown', (event) => {
   if (event.key !== 'Escape') return;
-  if (more?.open) {
+  const more = moreMenus.find(item => item.open);
+  if (more) {
     more.open = false;
     more.querySelector('summary').focus();
   } else if (compact.matches && menu?.getAttribute('aria-expanded') === 'true') {

@@ -1,6 +1,6 @@
 # IMPACTAIR
 
-The default IMPACTAIR website, based on the supplied eleven-page mobile design package. The site uses the reference’s navy, cyan and orange branding, bold italic headings and festival imagery, with responsive desktop and mobile layouts.
+The default IMPACTAIR website, based on the supplied eleven-page mobile design package. The About Us page follows the user’s subsequently supplied desktop artwork and exact copy. The site uses the references’ navy, cyan and orange branding, bold headings and festival imagery, with responsive desktop and mobile layouts.
 
 ## Publishing
 
@@ -12,10 +12,12 @@ The primary experience contains Home, About Us, Benefits, Festivals & Events, 20
 
 ## Editing
 
-- `scripts/main_pages.py`: primary-page content.
+- `scripts/main_pages.py`: primary-page content, with About Us overridden by its dedicated reference module.
+- `scripts/about_reference.py`: the exact About Us reference copy, statistics and page structure.
 - `scripts/support_pages.py`: contact, careers, privacy, terms and artwork content.
 - `scripts/build_site.py`: common accessible header, footer, metadata and static HTML generation.
 - `assets/impactair.css` and `assets/impactair.js`: the current design and interactions.
+- `assets/about-reference.css`: the dedicated About Us layout and responsive mobile presentation.
 - `assets/site.css`, `assets/site.js` and `assets/legacy-theme.css`: retained resources and their matching theme.
 
 After changing content or shared templates, run `python scripts/build_site.py` and commit the generated HTML along with the source changes. The command also prepares an ignored `dist/` directory for local preview; GitHub Pages uses the root HTML files. Rebuilding requires only Python’s standard library. There is no required build step on deployment.
@@ -26,8 +28,14 @@ The attachment’s small mobile previews are design references, not embedded web
 
 Production hero and festival art are larger original assets matching the supplied visual direction. Avoid enlarging thumbnails or resaving images at low quality. All image elements have intrinsic dimensions, descriptive alternate text where needed, and deferred loading below the first screen.
 
+The About Us artwork is the user’s original 1024 × 1536 desktop reference, preserved in `assets/source/about-reference.png` and delivered as the lossless `assets/about-reference.webp`. Its photographic regions are displayed through CSS without regenerating the artwork. Page copy, headings, controls and icons are live HTML/SVG elements, with a mobile layout that stacks the content for readability. See `assets/ASSETS.md` for provenance and delivery details.
+
 ## Enquiries and content
 
 The quote form prepares an email draft to the existing `info@impactair.ca` address. The visitor reviews and sends the draft in their email application; the website does not claim to submit messages to a backend. Festival enquiry links prefill the relevant campaign topic. No analytics, advertising cookies or external font service are included.
 
-The ZIP describes its contact information and event dates as illustrative. Placeholder telephone numbers, unconfirmed festival dates and unsupported audience totals are not published as facts. The 2027 pages invite proposals with current availability. Careers describe expressions of interest rather than confirmed vacancies. Artwork dimensions from the design are marked as layout references requiring the final production template. Existing case-study concepts remain identified as concepts.
+The ZIP describes its contact information and event dates as illustrative. The other pages omit placeholder telephone numbers and unconfirmed festival dates; the 2027 pages invite proposals with current availability rather than treating the ZIP’s sample event list or audience totals as verified data.
+
+At the user’s explicit request, About Us reproduces the separately supplied desktop reference’s copy and statistics: **50 Festivals**, **7 Million People**, and **June–September 2027**. These figures come directly from that reference; they were not independently verified as part of the website implementation.
+
+Careers describe expressions of interest rather than confirmed vacancies. Artwork dimensions from the design are marked as layout references requiring the final production template. Existing case-study concepts remain identified as concepts.

@@ -2,6 +2,18 @@
 
 The eleven mobile PNGs in the supplied ZIP are visual design references. They include phone frames and are not used as flattened webpage images.
 
+## User-supplied About Us desktop reference
+
+The user subsequently supplied a separate desktop About Us design and requested that its artwork, layout and copy be reproduced exactly. It is preserved separately from the generated promotional assets below.
+
+| Source | Native dimensions | Website delivery |
+| --- | --- | --- |
+| `source/about-reference.png` | 1024 × 1536 | `about-reference.webp` — lossless WebP at the original dimensions |
+
+The PNG is an unchanged copy of the supplied artwork. The WebP preserves its pixels without lossy recompression. `about-reference.css` displays photographic regions from that asset; those scenes were not regenerated or replaced. The complete screenshot is not used as a flattened functional page. Headings, body copy, statistics, buttons and icons are recreated as native HTML/SVG, and the responsive mobile layout stacks the sections while retaining the supplied visual identity.
+
+`scripts/about_reference.py` contains the exact requested copy, including **50 Festivals**, **7 Million People**, and **June–September 2027**. These are user-requested statements from the desktop reference, not independently verified event or audience data. This separate reference does not change the original ZIP’s notice that its sample contact information and festival dates are illustrative.
+
 ## New image masters
 
 The following promotional concept images were created with the built-in image generation tool to provide larger, clean artwork in the supplied navy/cyan/orange visual style. They illustrate campaign settings and do not document confirmed festival participation.
@@ -32,4 +44,4 @@ The PNG masters total 14,814,489 bytes; the five full-size WebP delivery images 
 
 ## Other assets
 
-Existing `design-*` and other historical assets remain available to the retained resource pages. Shared icons and the favicon are SVG. The display font is a local Latin subset of DejaVu Sans Condensed Bold Oblique; its license is included in `fonts/DejaVu-LICENSE.txt`. Typography, controls and branding remain live/vector elements, preserving clarity at browser zoom and on high-density displays.
+Existing `design-*` and other historical assets remain available to the retained resource pages. Shared icons and the favicon are SVG. `about-icons.svg` supplies the thinner outline symbols used by the desktop About reference. The main display font is a local Latin subset of DejaVu Sans Condensed Bold Oblique. About uses additional local subsets of DejaVu Sans Bold Oblique (`about-display.woff`) and DejaVu Sans Condensed Bold (`about-headings.woff`) for its wider italic titles and heavier section headings. Their license is included in `fonts/DejaVu-LICENSE.txt`. Typography, controls and branding remain live/vector elements, preserving clarity at browser zoom and on high-density displays.

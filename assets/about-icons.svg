@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="target" viewBox="0 0 64 64">
+    <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M40 9a25 25 0 1 0 15 15"/>
+      <path d="M35 18a16 16 0 1 0 11 11"/>
+      <path d="M30 27a7 7 0 1 0 7 7M30 34 51 13"/>
+      <path d="m45 12 8-8 1 7 7 1-8 8-7-1Z"/>
+    </g>
+  </symbol>
+  <symbol id="users" viewBox="0 0 64 64">
+    <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="32" cy="18" r="8.5"/>
+      <circle cx="12" cy="23" r="6.5"/>
+      <circle cx="52" cy="23" r="6.5"/>
+      <path d="M17 54v-8a15 15 0 0 1 30 0v8M3 50v-6a12 12 0 0 1 13-12M61 50v-6a12 12 0 0 0-13-12"/>
+    </g>
+  </symbol>
+  <symbol id="calendar-empty" viewBox="0 0 64 64">
+    <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="15" width="48" height="43" rx="5"/>
+      <path d="M19 6v17M45 6v17M8 29h48"/>
+    </g>
+  </symbol>
+  <symbol id="calendar" viewBox="0 0 64 64">
+    <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="8" y="15" width="48" height="43" rx="5"/>
+      <path d="M19 6v17M45 6v17M8 29h48"/>
+    </g>
+    <g fill="currentColor">
+      <rect x="17" y="36" width="6" height="6" rx="1.4"/>
+      <rect x="29" y="36" width="6" height="6" rx="1.4"/>
+      <rect x="41" y="36" width="6" height="6" rx="1.4"/>
+      <rect x="17" y="47" width="6" height="6" rx="1.4"/>
+      <rect x="29" y="47" width="6" height="6" rx="1.4"/>
+      <rect x="41" y="47" width="6" height="6" rx="1.4"/>
+    </g>
+  </symbol>
+  <symbol id="handshake" viewBox="0 0 64 64">
+    <g fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m3 27 11-18 10 5-11 19Zm38-13 10-5 10 18-10 6"/>
+      <path d="m23 16 6-2M41 15l-7-1a8 8 0 0 0-6 2l-7 7a3.5 3.5 0 0 0 5 5l7-6 15 14a3.5 3.5 0 0 1-5 5l-7-6"/>
+      <path d="m43 41 1 1a3.5 3.5 0 0 1-5 5l-7-6M37 45a3.5 3.5 0 0 1-5 5l-4-4M30 48a3.5 3.5 0 0 1-5 5L14 42l-2-8M50 32l-3 3"/>
+      <path d="m15 35 2-2a3 3 0 0 1 4 4l-2 2a3 3 0 0 1-4-4Zm5 5 2-2a3 3 0 0 1 4 4l-2 2a3 3 0 0 1-4-4Zm5 5 2-2a3 3 0 0 1 4 4l-2 2a3 3 0 0 1-4-4Z"/>
+    </g>
+  </symbol>
+  <symbol id="eye" viewBox="0 0 64 64">
+    <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 32S14 15 32 15s29 17 29 17-11 17-29 17S3 32 3 32Z"/>
+      <circle cx="32" cy="32" r="9.5"/>
+    </g>
+  </symbol>
+  <symbol id="pin" viewBox="0 0 64 64">
+    <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M49 23c0 13-17 37-17 37S15 36 15 23a17 17 0 0 1 34 0Z"/>
+      <circle cx="32" cy="23" r="7.5"/>
+    </g>
+  </symbol>
+  <symbol id="layers" viewBox="0 0 64 64">
+    <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m32 7 26 13-26 13L6 20 32 7ZM8 32l24 13 24-13M8 44l24 13 24-13"/>
+    </g>
+  </symbol>
+  <symbol id="arrow-right" viewBox="0 0 64 64">
+    <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 32h45M39 17l15 15-15 15"/>
+    </g>
+  </symbol>
+</svg>
