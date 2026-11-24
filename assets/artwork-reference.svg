@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 860" width="600" height="860" role="img" aria-labelledby="artwork-title artwork-desc">
+  <title id="artwork-title">Inflatable billboard layout references</title>
+  <desc id="artwork-desc">Two proportional layout diagrams. The 40 by 22 foot reference has a 35.43 by 15.74 foot safe area. The 20 by 20 foot reference has a 17.72 by 14.31 foot safe area. Cyan dashed outlines indicate the safe areas. These are design references, not approved production templates.</desc>
+  <defs>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17679b"/>
+      <stop offset="0.12" stop-color="#063a67"/>
+      <stop offset="0.48" stop-color="#001c3e"/>
+      <stop offset="0.83" stop-color="#092b50"/>
+      <stop offset="1" stop-color="#000e24"/>
+    </linearGradient>
+    <linearGradient id="print-surface" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a3d69"/>
+      <stop offset="1" stop-color="#001c3e"/>
+    </linearGradient>
+  </defs>
+  <g font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <g aria-label="40 by 22 foot layout reference">
+      <text x="300" y="49" fill="#001c3e" font-size="42" font-weight="800">40 ft × 22 ft</text>
+      <!-- 12 SVG units per foot: outer 480 × 264; safe area 425.16 × 188.88. -->
+      <rect x="60" y="85" width="480" height="264" rx="27" fill="url(#frame)" stroke="#00152f" stroke-width="2"/>
+      <rect x="66" y="91" width="468" height="252" rx="23" fill="none" stroke="#6ac8f2" stroke-opacity=".35" stroke-width="2"/>
+      <rect x="80" y="105" width="440" height="224" rx="7" fill="url(#print-surface)" stroke="#000d21" stroke-width="3"/>
+      <path d="M61 147h18m-18 64h18m-18 64h18m442-128h18m-18 64h18m-18 64h18" fill="none" stroke="#00152f" stroke-width="3" opacity=".75"/>
+      <rect x="87.42" y="122.56" width="425.16" height="188.88" rx="3" fill="none" stroke="#00d3f5" stroke-width="3" stroke-dasharray="10 8"/>
+      <text x="300" y="230" fill="#b6f2ff" font-size="40" font-weight="700">SAFE AREA</text>
+      <path d="M60 371v18m0-9h480m0-9v18M554 85h18m-9 0v264m-9 0h18" fill="none" stroke="#e77600" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <g aria-label="20 by 20 foot layout reference">
+      <text x="300" y="477" fill="#001c3e" font-size="42" font-weight="800">20 ft × 20 ft</text>
+      <!-- 14 SVG units per foot: outer 280 × 280; safe area 248.08 × 200.34. -->
+      <rect x="160" y="513" width="280" height="280" rx="25" fill="url(#frame)" stroke="#00152f" stroke-width="2"/>
+      <rect x="166" y="519" width="268" height="268" rx="21" fill="none" stroke="#6ac8f2" stroke-opacity=".35" stroke-width="2"/>
+      <rect x="175" y="533" width="250" height="240" rx="7" fill="url(#print-surface)" stroke="#000d21" stroke-width="3"/>
+      <path d="M161 574h13m-13 67h13m-13 67h13m252-134h13m-13 67h13m-13 67h13" fill="none" stroke="#00152f" stroke-width="3" opacity=".75"/>
+      <rect x="175.96" y="552.83" width="248.08" height="200.34" rx="3" fill="none" stroke="#00d3f5" stroke-width="3" stroke-dasharray="10 8"/>
+      <text x="300" y="666" fill="#b6f2ff" font-size="40" font-weight="700">SAFE AREA</text>
+      <path d="M160 815v18m0-9h280m0-9v18M454 513h18m-9 0v280m-9 0h18" fill="none" stroke="#e77600" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

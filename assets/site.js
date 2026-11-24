@@ -1,6 +1,6 @@
 const menu = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#site-nav');
-const compact = matchMedia('(max-width: 940px)');
+const compact = matchMedia('(max-width: 960px)');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const more = navigation.querySelector('.more');
 
