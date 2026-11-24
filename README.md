@@ -1,6 +1,6 @@
 # IMPACTAIR
 
-The default IMPACTAIR website, based on the supplied eleven-page mobile design package. About Us takes its wording and statistics from the separately supplied reference and presents them in the existing site design. Its header, full-width hero, typography, cards, buttons and footer use the same shared components as the other primary pages.
+The default IMPACTAIR website, based on the supplied eleven-page mobile design package. About Us matches the separately supplied desktop reference’s content, photography, body typography and cards, while keeping the existing site logo and navigation unchanged. Its top hero and closing call to action span the full page width; the responsive middle content is capped at 1440 px. The About page ends with its closing call to action and does not render a footer.
 
 ## Publishing
 
@@ -17,10 +17,10 @@ The primary experience contains Home, About Us, Benefits, Festivals & Events, 20
 - `scripts/support_pages.py`: contact, careers, privacy, terms and artwork content.
 - `scripts/build_site.py`: common accessible header, footer, metadata and static HTML generation.
 - `assets/impactair.css` and `assets/impactair.js`: the current design and interactions.
-- `assets/about-reference.css`: retained historical reference layout; the current About page does not load it.
+- `assets/about-reference.css`: the active reference-matched About body, with styles scoped to that page’s content so they do not alter the shared logo, header or navigation.
 - `assets/site.css`, `assets/site.js` and `assets/legacy-theme.css`: retained resources and their matching theme.
 
-After changing content or shared templates, run `python scripts/build_site.py` and commit the generated HTML along with the source changes. The generator versions shared CSS/JavaScript URLs and About navigation links so updated content does not reuse stale cached styling or page responses. The command also prepares an ignored `dist/` directory for local preview; GitHub Pages uses the root HTML files. Rebuilding requires only Python’s standard library. There is no required build step on deployment.
+After changing content or shared templates, run `python scripts/build_site.py` and commit the generated HTML along with the source changes. The generator versions shared CSS/JavaScript URLs, the About stylesheet and About HTML navigation links so updated content does not reuse stale cached styling or page responses. The command also prepares an ignored `dist/` directory for local preview; GitHub Pages uses the root HTML files. Rebuilding requires only Python’s standard library. There is no required build step on deployment.
 
 ## Images and type
 
@@ -28,7 +28,7 @@ The attachment’s small mobile previews are design references, not embedded web
 
 Production hero and festival art are larger original assets matching the supplied visual direction. Avoid enlarging thumbnails or resaving images at low quality. All image elements have intrinsic dimensions, descriptive alternate text where needed, and deferred loading below the first screen.
 
-The original About Us screenshot is preserved in `assets/source/about-reference.png` and the lossless `assets/about-reference.webp` for reference. The current page uses its copy with the website’s existing high-resolution hero and community image sets, shared fonts and SVG icons. It does not load the old screenshot layout or its custom fonts. See `assets/ASSETS.md` for provenance and delivery details.
+The original About Us artwork is preserved in `assets/source/about-reference.png` and delivered through the pixel-identical, lossless `assets/about-reference.webp`. CSS selects its photographic regions while the exact supplied text and statistics remain live HTML. Dedicated local body fonts and SVG icons reproduce the reference treatment without changing the shared header. The middle `.about-ref-content` container has a 1440 px maximum width and adapts for mobile; the hero and closing call to action remain outside that cap. See `assets/ASSETS.md` for provenance and delivery details.
 
 ## Enquiries and content
 

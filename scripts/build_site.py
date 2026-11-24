@@ -12,7 +12,11 @@ from about_reference import ABOUT_REFERENCE
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {**MAIN_PAGES, **SUPPORT_PAGES, 'about.html': ABOUT_REFERENCE}
 ORIGIN = 'https://nmjp8989.github.io/impactair/'
-ABOUT_REVISION = sha256((ROOT/'scripts/about_reference.py').read_bytes() + (ROOT/'assets/impactair.css').read_bytes()).hexdigest()[:12]
+ABOUT_REVISION = sha256(
+    (ROOT/'scripts/about_reference.py').read_bytes()
+    + (ROOT/'assets/impactair.css').read_bytes()
+    + ((ROOT/ABOUT_REFERENCE['extra_css']).read_bytes() if ABOUT_REFERENCE.get('extra_css') else b'')
+).hexdigest()[:12]
 
 
 def asset_url(path):

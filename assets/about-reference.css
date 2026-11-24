@@ -1,11 +1,11 @@
-/* About Us content follows the supplied desktop reference.
-   The header and full-width hero inherit the shared homepage theme.
-   Body photographs use the lossless, unchanged reference image. */
+/* Reference-matched About content only. The global header and navigation
+   remain entirely controlled by impactair.css. Artwork is lossless. */
 @font-face { font-family: About Display; src: url('fonts/about-display.woff') format('woff'); font-style: italic; font-weight: 900; font-display: swap; }
 @font-face { font-family: About Headings; src: url('fonts/about-headings.woff') format('woff'); font-style: normal; font-weight: 800 900; font-display: swap; }
-.page-about { background: #fff; color: #000d2c; }
 
-.about-reference-page { max-width: 1440px; margin-inline: auto; container-type: inline-size; background: #fff; }
+.about-reference-page { --about-banner-width: min(100cqw, 1440px); width: 100%; container-type: inline-size; background: #fff; color: #000d2c; }
+.about-ref-content { max-width: 1440px; margin-inline: auto; container-type: inline-size; }
+.about-ref-hero > .about-ref-wrap, .about-ref-cta > .about-ref-wrap { width: min(90.625%, 1305px); }
 .about-ref-wrap { width: 90.625%; margin-inline: auto; }
 .about-reference-page p { line-height: 1.15; }
 .about-reference-page em { color: #00bcea; }
@@ -15,7 +15,15 @@
 
 /* The untouched image is used as a source sheet. CSS isolates photo regions;
    native headings replace the raster letters for clear zoom and accessibility. */
-.about-ref-who-copy h2::before, .about-ref-why-copy h2::before { display: block; content: ''; width: 5.46875cqw; height: .78125cqw; background: #ff7900; transform: skewX(-20deg) rotate(-1deg); }
+.about-ref-hero { height: calc(var(--about-banner-width) * 0.3486328125); position: relative; isolation: isolate; overflow: hidden; color: #fff; background: linear-gradient(105deg, #001832 0%, #003571 47%, #0764a3 68%); }
+.about-ref-hero-art { position: absolute; z-index: -1; inset: 0; background: url('about-reference.webp') center 4.580153% / 100% 430.252101% no-repeat; mask-image: linear-gradient(90deg, transparent 0%, transparent 43%, #000 53%), linear-gradient(0deg, #000 0%, #000 19%, transparent 30%); }
+.about-ref-hero-art, .about-ref-cta-art { left: auto; width: var(--about-banner-width); }
+.about-ref-hero-copy { padding-top: calc(var(--about-banner-width) * 0.0400390625); }
+.about-ref-hero-copy::before, .about-ref-who-copy h2::before, .about-ref-why-copy h2::before { display: block; content: ''; width: 5.46875cqw; height: .78125cqw; background: #ff7900; transform: skewX(-20deg) rotate(-1deg); }
+.about-ref-hero-copy::before { width: calc(var(--about-banner-width) * .0546875); height: calc(var(--about-banner-width) * .0078125); margin: 0 0 calc(var(--about-banner-width) * 0.013671875) calc(var(--about-banner-width) * 0.0029296875); }
+.about-ref-hero h1 { font-size: calc(var(--about-banner-width) * 0.0625); letter-spacing: -.04em; line-height: 1.03; font-style: italic; font-weight: 900; }
+.about-ref-hero-copy > p { margin-top: calc(var(--about-banner-width) * 0.009765625); font-size: calc(var(--about-banner-width) * 0.02734375); font-style: italic; font-weight: 600; line-height: 1.07; letter-spacing: -.025em; }
+.about-ref-hero-copy::after { content: ''; display: block; margin: calc(var(--about-banner-width) * 0.0166015625) 0 0 calc(var(--about-banner-width) * 0.0029296875); width: calc(var(--about-banner-width) * 0.12890625); height: calc(var(--about-banner-width) * 0.0068359375); background: #ff7900; transform: skewX(-22deg); }
 
 .about-ref-who { min-height: 34.1796875cqw; position: relative; }
 .about-ref-who .about-ref-wrap { position: relative; width: 100%; min-height: 34.1796875cqw; }
@@ -67,21 +75,29 @@
 .about-ref-reason > .about-ref-icon { width: 5.078125cqw; height: 5.078125cqw; color: #06132d; }
 .about-ref-reason h3 { font-family: Arial, Helvetica, sans-serif; font-style: normal; font-size: 1.7578125cqw; font-weight: 800; line-height: 1.12; letter-spacing: -.045em; text-align: center; margin-top: .78125cqw; }
 
-.about-ref-cta { height: 23.33984375cqw; position: relative; isolation: isolate; overflow: hidden; color: #fff; background: linear-gradient(115deg, #101d40 0%, #553c67 38%, #d77d8b 70%); }
-.about-ref-cta-art { position: absolute; z-index: -1; inset: 0; background: url('about-reference.webp') center bottom / 100% 642.677824% no-repeat; mask-image: linear-gradient(90deg, transparent 0%, transparent 60%, #000 65%), linear-gradient(0deg, #000 0%, #000 23%, transparent 28%); }
-.about-ref-cta-copy { padding-top: 2.1484375cqw; }
-.about-ref-cta h2 { font-size: 3.90625cqw; line-height: 1.05; letter-spacing: -.04em; font-style: italic; }
-.about-ref-cta h2::after { content: ''; display: block; width: 14.453125cqw; height: .68359375cqw; margin: .48828125cqw 0 0 .1953125cqw; background: #ff7900; transform: skewX(-20deg); }
-.about-ref-cta-actions { display: flex; gap: 2.63671875cqw; margin-top: 1.3671875cqw; }
-.about-ref-cta-actions .button { min-height: 4.19921875cqw; padding: .68359375cqw 1.7578125cqw; border-radius: .78125cqw; border: 1px solid #ff8d26; box-shadow: none; background: linear-gradient(180deg, #ff8b00, #ff6800); color: #fff; font-size: 1.5625cqw; font-weight: 700; }
+.about-ref-cta { height: calc(var(--about-banner-width) * 0.2333984375); position: relative; isolation: isolate; overflow: hidden; color: #fff; background: linear-gradient(115deg, #101d40 0%, #553c67 38%, #d77d8b 70%); }
+.about-ref-cta-art { position: absolute; z-index: -1; inset: 0; left: auto; background: url('about-reference.webp') center bottom / 100% 642.677824% no-repeat; mask-image: linear-gradient(90deg, transparent 0%, transparent 62.5%, #000 67.5%), linear-gradient(0deg, #000 0%, #000 22%, transparent 24%); }
+.about-ref-cta-copy { padding-top: calc(var(--about-banner-width) * 0.021484375); }
+.about-ref-cta h2 { font-size: calc(var(--about-banner-width) * 0.0390625); line-height: 1.05; letter-spacing: -.04em; font-style: italic; }
+.about-ref-cta h2::after { content: ''; display: block; width: calc(var(--about-banner-width) * 0.14453125); height: calc(var(--about-banner-width) * 0.0068359375); margin: calc(var(--about-banner-width) * 0.0048828125) 0 0 calc(var(--about-banner-width) * 0.001953125); background: #ff7900; transform: skewX(-20deg); }
+.about-ref-cta-actions { display: flex; gap: calc(var(--about-banner-width) * 0.0263671875); margin-top: calc(var(--about-banner-width) * 0.013671875); }
+.about-ref-cta-actions .button { min-height: calc(var(--about-banner-width) * 0.0419921875); padding: calc(var(--about-banner-width) * 0.0068359375) calc(var(--about-banner-width) * 0.017578125); border-radius: calc(var(--about-banner-width) * 0.0078125); border: 1px solid #ff8d26; box-shadow: none; background: linear-gradient(180deg, #ff8b00, #ff6800); color: #fff; font-size: calc(var(--about-banner-width) * 0.015625); font-weight: 700; }
 .about-ref-cta-actions .button:hover { background: #ed6500; transform: none; }
-.about-ref-cta-actions .about-ref-icon { width: 1.953125cqw; height: 1.953125cqw; margin-left: .1953125cqw; }
-.about-ref-cta-actions .about-ref-contact { min-width: 13.28125cqw; background: #17203a4d; border: 2px solid #fff; color: #fff; }
+.about-ref-cta-actions .about-ref-icon { width: calc(var(--about-banner-width) * 0.01953125); height: calc(var(--about-banner-width) * 0.01953125); margin-left: calc(var(--about-banner-width) * 0.001953125); }
+.about-ref-cta-actions .about-ref-contact { min-width: calc(var(--about-banner-width) * 0.1328125); background: #17203a4d; border: 2px solid #fff; color: #fff; }
 .about-ref-cta-actions .about-ref-contact:hover { background: #17203a; }
+
 
 /* Mobile preserves the supplied content and photographs, with readable reflow. */
 @media (max-width: 960px) {
-  .about-ref-wrap { width: calc(100% - 40px); }
+  .about-ref-wrap, .about-ref-hero > .about-ref-wrap, .about-ref-cta > .about-ref-wrap { width: calc(100% - 40px); }
+  .about-ref-hero { height: 570px; background: linear-gradient(110deg, #00172f, #034077); }
+  .about-ref-hero-art { inset: auto 0 0; width: 100%; height: 290px; background-size: auto 430.252101%; background-position: right 4.580153%; mask-image: linear-gradient(180deg, transparent, #000 26%), linear-gradient(90deg, transparent calc(100% - 474px), #000 calc(100% - 393px)), linear-gradient(0deg, #000 0%, #000 19%, transparent 30%); mask-composite: intersect, add; }
+  .about-ref-hero-copy { padding-top: 30px; }
+  .about-ref-hero-copy::before { width: 46px; height: 6px; margin: 0 0 14px 2px; }
+  .about-ref-hero h1 { font-size: clamp(42px, 12vw, 70px); }
+  .about-ref-hero-copy > p { margin-top: 17px; font-size: clamp(19px, 5.5vw, 28px); line-height: 1.13; letter-spacing: -.035em; }
+  .about-ref-hero-copy::after { margin: 20px 0 0 2px; height: 6px; width: 125px; }
   .about-ref-who { min-height: 0; padding: 30px 0 0; }
   .about-ref-who .about-ref-wrap { min-height: 0; display: flex; flex-direction: column; }
   .about-ref-who-copy { width: auto; padding: 0 22px; }
@@ -126,7 +142,7 @@
   .about-ref-reason > .about-ref-icon { width: 44px; height: 44px; }
   .about-ref-reason h3 { font-size: 15px; line-height: 1.13; margin-top: 11px; letter-spacing: -.035em; }
   .about-ref-cta { height: 465px; background: linear-gradient(120deg, #101a3d, #694267); }
-  .about-ref-cta-art { inset: auto 0 0; height: 210px; background-size: auto 642.677824%; background-position: right bottom; mask-image: linear-gradient(180deg, transparent, #000 25%), linear-gradient(90deg, transparent calc(100% - 351px), #000 calc(100% - 315px)), linear-gradient(0deg, #000 0%, #000 22%, transparent 24%); mask-composite: intersect, add; }
+  .about-ref-cta-art { inset: auto 0 0; width: 100%; height: 210px; background-size: auto 642.677824%; background-position: right bottom; mask-image: linear-gradient(180deg, transparent, #000 25%), linear-gradient(90deg, transparent calc(100% - 351px), #000 calc(100% - 315px)), linear-gradient(0deg, #000 0%, #000 22%, transparent 24%); mask-composite: intersect, add; }
   .about-ref-cta-copy { padding-top: 30px; }
   .about-ref-cta h2 { font-size: clamp(26px,7.2vw,44px); line-height: 1.12; letter-spacing: -.055em; }
   .about-ref-cta h2::after { height: 6px; width: 125px; margin: 11px 0 0 2px; }
@@ -136,6 +152,8 @@
   .about-ref-cta-actions .about-ref-contact { min-width: 115px; }
 }
 @media (max-width: 370px) {
+  .about-ref-hero { height: 550px; }
+  .about-ref-hero-copy > p { font-size: 18px; }
   .about-ref-reasons { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .about-ref-reason:last-child { grid-column: 1 / -1; }
   .about-ref-stat { gap: 16px; padding-inline: 9px; }
