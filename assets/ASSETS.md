@@ -4,13 +4,13 @@ The eleven mobile PNGs in the supplied ZIP are visual design references. They in
 
 ## User-supplied About Us desktop reference
 
-The user subsequently supplied a separate desktop About Us design and requested that its artwork, layout and copy be reproduced exactly. It is preserved separately from the generated promotional assets below.
+The user supplied a separate desktop About Us reference, then clarified that it should supply the page content while the website’s existing design remains consistent. The original image is preserved separately from the generated promotional assets below.
 
 | Source | Native dimensions | Website delivery |
 | --- | --- | --- |
 | `source/about-reference.png` | 1024 × 1536 | `about-reference.webp` — lossless WebP at the original dimensions |
 
-The PNG is an unchanged copy of the supplied artwork. The WebP preserves its pixels without lossy recompression. `about-reference.css` displays the Who We Are and closing-banner photographic regions from that asset. The user subsequently requested a full-width top banner consistent with Home; About therefore uses the shared header and homepage hero component with the larger `hero-festival.webp` responsive image set. The complete screenshot is not used as a flattened functional page. Headings, body copy, statistics, buttons and icons are recreated as native HTML/SVG, and the responsive mobile layout stacks the sections while retaining the supplied visual identity.
+The PNG is an unchanged copy of the supplied artwork. The WebP preserves its pixels without lossy recompression. Both remain reference assets; the current About page does not load the earlier `about-reference.css` layout, its fonts or its image sprite. About uses the shared header, homepage hero, content cards and footer, with the larger `hero-festival.webp` and `festival-community.webp` responsive image sets. Headings, body copy, statistics, buttons and icons are native HTML/SVG.
 
 `scripts/about_reference.py` contains the exact requested copy, including **50 Festivals**, **7 Million People**, and **June–September 2027**. These are user-requested statements from the desktop reference, not independently verified event or audience data. This separate reference does not change the original ZIP’s notice that its sample contact information and festival dates are illustrative.
 
@@ -44,4 +44,4 @@ The PNG masters total 14,814,489 bytes; the five full-size WebP delivery images 
 
 ## Other assets
 
-Existing `design-*` and other historical assets remain available to the retained resource pages. Shared icons and the favicon are SVG. `about-icons.svg` supplies the thinner outline symbols used by the desktop About reference. The main display font is a local Latin subset of DejaVu Sans Condensed Bold Oblique. About uses additional local subsets of DejaVu Sans Bold Oblique (`about-display.woff`) and DejaVu Sans Condensed Bold (`about-headings.woff`) for its wider italic titles and heavier section headings. Their license is included in `fonts/DejaVu-LICENSE.txt`. Typography, controls and branding remain live/vector elements, preserving clarity at browser zoom and on high-density displays.
+Existing `design-*` and other historical assets remain available to the retained resource pages. Shared icons and the favicon are SVG. The current primary pages, including About, use the local Latin subset of DejaVu Sans Condensed Bold Oblique in `impact-display.woff`. The historical reference implementation also retains `about-icons.svg`, `about-display.woff` and `about-headings.woff`; the current About page does not load them. The font license is included in `fonts/DejaVu-LICENSE.txt`. Typography, controls and branding remain live/vector elements, preserving clarity at browser zoom and on high-density displays.

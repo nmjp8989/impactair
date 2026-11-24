@@ -2,6 +2,7 @@
 """Generate the static, GitHub Pages-ready ImpactAir website (no dependencies)."""
 from pathlib import Path
 from html import escape
+from hashlib import sha256
 import re
 import shutil
 from main_pages import MAIN_PAGES, icon
@@ -11,6 +12,13 @@ from about_reference import ABOUT_REFERENCE
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {**MAIN_PAGES, **SUPPORT_PAGES, 'about.html': ABOUT_REFERENCE}
 ORIGIN = 'https://nmjp8989.github.io/impactair/'
+ABOUT_REVISION = sha256((ROOT/'scripts/about_reference.py').read_bytes() + (ROOT/'assets/impactair.css').read_bytes()).hexdigest()[:12]
+
+
+def asset_url(path):
+    """Changed assets receive a fresh URL instead of reusing cached styling."""
+    revision = sha256((ROOT/path).read_bytes()).hexdigest()[:12]
+    return f'{path}?v={revision}'
 
 
 def brand():
@@ -19,7 +27,8 @@ def brand():
 
 def navlink(path, label, current):
     active = ' aria-current="page"' if path == current else ''
-    return f'<a href="{path}"{active}>{label}</a>'
+    href = f'{path}?v={ABOUT_REVISION}' if path == 'about.html' else path
+    return f'<a href="{href}"{active}>{label}</a>'
 
 
 def header(current):
@@ -63,7 +72,7 @@ def document(path, data):
     title = data['title'] + (' | IMPACTAIR' if not data['title'].endswith('IMPACTAIR') else '')
     extra_head = ''
     if data.get('extra_css'):
-        extra_head = f'\n  <link rel="stylesheet" href="{data["extra_css"]}">'
+        extra_head = f'\n  <link rel="stylesheet" href="{asset_url(data["extra_css"])}">'
     html = f'''<!doctype html>
 <html lang="en-CA"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,7 +82,7 @@ def document(path, data):
   <meta property="og:type" content="website"><meta property="og:image" content="{ORIGIN}assets/hero-festival.webp">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/impact-display.woff" as="font" type="font/woff" crossorigin>
-  <link rel="stylesheet" href="assets/impactair.css"><script src="assets/impactair.js" defer></script>{extra_head}
+  <link rel="stylesheet" href="{asset_url('assets/impactair.css')}"><script src="{asset_url('assets/impactair.js')}" defer></script>{extra_head}
 </head><body class="modern-site page-{path.removesuffix('.html')}">
 {header(path)}
 <main id="main">{'' if data.get('custom_layout') else hero(data)}{data['body']}</main>
@@ -92,8 +101,8 @@ def main():
         if not p.exists():
             continue
         text = p.read_text()
-        text = re.sub(r'  <a class="skip-link".*?</header>', header(name), text, flags=re.S)
-        text = re.sub(r'  <footer class="site-footer">.*?</footer>', footer(name), text, flags=re.S)
+        text = re.sub(r'<a class="skip-link"[^>]*>.*?</header>', header(name), text, flags=re.S)
+        text = re.sub(r'<footer class="site-footer">.*?</footer>', footer(name), text, flags=re.S)
         if 'assets/legacy-theme.css' not in text:
             text = text.replace('<link rel="stylesheet" href="assets/site.css">', '<link rel="stylesheet" href="assets/site.css">\n  <link rel="stylesheet" href="assets/legacy-theme.css">')
         text = text.replace('href="assets/logo.webp"','href="assets/favicon.svg"')
