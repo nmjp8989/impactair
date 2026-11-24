@@ -1,4 +1,4 @@
-"""About Us content transcribed from the supplied desktop reference.
+"""About Us reference content beneath the shared full-width site banner.
 
 The background artwork is supplied through about-reference.css. Text, icons
 and navigation remain native page elements for clear rendering and access.
@@ -30,25 +30,16 @@ CHECK = '''<svg class="about-ref-check" aria-hidden="true" width="18" height="18
 ABOUT_REFERENCE = {
     "title": "About Us",
     "description": "IMPACTAIR specializes in high-impact inflatable billboard rentals that give brands unmatched visibility at Ontario’s largest festivals, events and public gatherings.",
-    "custom_layout": True,
+    "hero": "home",
     "extra_css": "assets/about-reference.css",
     "no_footer": True,
     "heading": "ABOUT <em>US</em>",
-    "kicker": "",
+    "kicker": "Inflatable billboard advertising",
     "intro": "Ontario’s Leader in Inflatable Billboard Advertising for Major Events.",
+    "actions": [("Request a Quote", "contact.html#quote", ""), ("Contact Us", "contact.html", "button-outline")],
     "body": f'''
 <div class="about-reference-page">
   <svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><clipPath id="about-who-photo-clip" clipPathUnits="objectBoundingBox"><path d="M .216 0 H 1 V 1 H .027 C .009 1 -.004 .980 .002 .953 L .154 .080 C .170 .023 .184 0 .216 0 Z"/></clipPath></defs></svg>
-  <section class="about-ref-hero">
-    <div class="about-ref-hero-art" aria-hidden="true"></div>
-    <div class="about-ref-wrap">
-      <div class="about-ref-hero-copy">
-        <h1>ABOUT <em>US</em></h1>
-        <p>Ontario’s Leader in Inflatable<br>Billboard Advertising<br>for Major Events.</p>
-      </div>
-    </div>
-  </section>
-
   <section class="about-ref-who">
     <div class="about-ref-wrap">
       <div class="about-ref-who-copy">

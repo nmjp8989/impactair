@@ -1,6 +1,6 @@
 # IMPACTAIR
 
-The default IMPACTAIR website, based on the supplied eleven-page mobile design package. The About Us page follows the user’s subsequently supplied desktop artwork and exact copy. The site uses the references’ navy, cyan and orange branding, bold headings and festival imagery, with responsive desktop and mobile layouts.
+The default IMPACTAIR website, based on the supplied eleven-page mobile design package. About Us uses the same full-width hero and navigation as Home, above the user’s subsequently supplied desktop content and exact copy. The site uses the references’ navy, cyan and orange branding, bold headings and festival imagery, with responsive desktop and mobile layouts.
 
 ## Publishing
 
@@ -28,7 +28,7 @@ The attachment’s small mobile previews are design references, not embedded web
 
 Production hero and festival art are larger original assets matching the supplied visual direction. Avoid enlarging thumbnails or resaving images at low quality. All image elements have intrinsic dimensions, descriptive alternate text where needed, and deferred loading below the first screen.
 
-The About Us artwork is the user’s original 1024 × 1536 desktop reference, preserved in `assets/source/about-reference.png` and delivered as the lossless `assets/about-reference.webp`. Its photographic regions are displayed through CSS without regenerating the artwork. Page copy, headings, controls and icons are live HTML/SVG elements, with a mobile layout that stacks the content for readability. See `assets/ASSETS.md` for provenance and delivery details.
+The About Us body artwork is the user’s original 1024 × 1536 desktop reference, preserved in `assets/source/about-reference.png` and delivered as the lossless `assets/about-reference.webp`. Its Who We Are and closing-banner photographic regions are displayed through CSS without regenerating the artwork. The full-width top banner reuses Home’s larger responsive hero image, shared typography and buttons. Page copy, headings, controls and icons are live HTML/SVG elements, with a mobile layout that stacks the content for readability. See `assets/ASSETS.md` for provenance and delivery details.
 
 ## Enquiries and content
 

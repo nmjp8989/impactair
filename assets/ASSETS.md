@@ -10,7 +10,7 @@ The user subsequently supplied a separate desktop About Us design and requested 
 | --- | --- | --- |
 | `source/about-reference.png` | 1024 × 1536 | `about-reference.webp` — lossless WebP at the original dimensions |
 
-The PNG is an unchanged copy of the supplied artwork. The WebP preserves its pixels without lossy recompression. `about-reference.css` displays photographic regions from that asset; those scenes were not regenerated or replaced. The complete screenshot is not used as a flattened functional page. Headings, body copy, statistics, buttons and icons are recreated as native HTML/SVG, and the responsive mobile layout stacks the sections while retaining the supplied visual identity.
+The PNG is an unchanged copy of the supplied artwork. The WebP preserves its pixels without lossy recompression. `about-reference.css` displays the Who We Are and closing-banner photographic regions from that asset. The user subsequently requested a full-width top banner consistent with Home; About therefore uses the shared header and homepage hero component with the larger `hero-festival.webp` responsive image set. The complete screenshot is not used as a flattened functional page. Headings, body copy, statistics, buttons and icons are recreated as native HTML/SVG, and the responsive mobile layout stacks the sections while retaining the supplied visual identity.
 
 `scripts/about_reference.py` contains the exact requested copy, including **50 Festivals**, **7 Million People**, and **June–September 2027**. These are user-requested statements from the desktop reference, not independently verified event or audience data. This separate reference does not change the original ZIP’s notice that its sample contact information and festival dates are illustrative.
 

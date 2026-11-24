@@ -23,20 +23,6 @@ def navlink(path, label, current):
 
 
 def header(current):
-    if current == 'about.html':
-        solutions = [('advertising-solutions.html','Advertising Solutions'),('benefits.html','Benefits'),('for-advertising-agencies.html','For Agencies')]
-        extra = [('2027-festival-opportunities.html','2027 Opportunities'),('festival-categories.html','Festival Categories'),('artwork-specifications.html','Artwork Specifications'),('careers.html','Careers'),('faq.html','FAQ'),('contact.html','Contact Us'),('privacy-policy.html','Privacy Policy'),('terms-of-use.html','Terms of Use')]
-        return f'''<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="wrap header-inner">{brand()}
-  <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav" hidden>{icon('menu')}{icon('close')}</button>
-  <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-    {navlink('index.html','Home',current)}{navlink('about.html','About',current)}
-    <details class="more"><summary>Solutions {icon('chevron-down')}</summary><div class="more-panel">{''.join(navlink(*x,current) for x in solutions)}</div></details>
-    {navlink('festivals.html','Events',current)}{navlink('gallery.html','Gallery',current)}{navlink('rental-options.html','Rentals',current)}
-    <details class="more"><summary>More {icon('chevron-down')}</summary><div class="more-panel">{''.join(navlink(*x,current) for x in extra)}</div></details>
-    <a class="button nav-quote" href="contact.html#quote">Request a Quote</a>
-  </nav><a class="button header-quote" href="contact.html#quote">Request a Quote</a>
-</div></header>'''
     primary = [('index.html','Home'),('about.html','About Us'),('benefits.html','Benefits'),('festivals.html','Festivals'),('contact.html','Contact')]
     extra = [('2027-festival-opportunities.html','2027 Opportunities'),('festival-categories.html','Festival Categories'),('artwork-specifications.html','Artwork Specifications'),('careers.html','Careers')]
     return f'''<a class="skip-link" href="#main">Skip to content</a>
@@ -77,7 +63,7 @@ def document(path, data):
     title = data['title'] + (' | IMPACTAIR' if not data['title'].endswith('IMPACTAIR') else '')
     extra_head = ''
     if data.get('extra_css'):
-        extra_head = f'\n  <link rel="stylesheet" href="{data["extra_css"]}">\n  <link rel="preload" href="assets/about-reference.webp" as="image">'
+        extra_head = f'\n  <link rel="stylesheet" href="{data["extra_css"]}">'
     html = f'''<!doctype html>
 <html lang="en-CA"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">

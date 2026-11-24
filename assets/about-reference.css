@@ -1,18 +1,9 @@
-/* About Us: exact supplied desktop composition with responsive native content.
-   All photographic regions use the same lossless, unchanged reference image. */
+/* About Us content follows the supplied desktop reference.
+   The header and full-width hero inherit the shared homepage theme.
+   Body photographs use the lossless, unchanged reference image. */
 @font-face { font-family: About Display; src: url('fonts/about-display.woff') format('woff'); font-style: italic; font-weight: 900; font-display: swap; }
 @font-face { font-family: About Headings; src: url('fonts/about-headings.woff') format('woff'); font-style: normal; font-weight: 800 900; font-display: swap; }
 .page-about { background: #fff; color: #000d2c; }
-.page-about .site-header { background: linear-gradient(110deg, #00172e, #00132c); border: 0; }
-.page-about .header-inner { width: 90.625%; max-width: 1305px; min-height: clamp(54px, 5.2734375vw, 76px); gap: clamp(18px, 2.34375vw, 34px); }
-.page-about .brand-word { font-size: clamp(35px, 3.90625vw, 56px); padding-block: 0; line-height: 1.1; letter-spacing: -.06em; }
-.page-about .brand-word b::after { width: 1.8em; height: .6em; top: -.12em; right: -.23em; border-width: 3px 5px 0 0; }
-.page-about .site-nav { gap: clamp(18px, 2.93vw, 42px); }
-.page-about .site-nav > a:not(.button), .page-about .more summary { min-height: clamp(40px, 4.3vw, 61px); font-size: clamp(12px, 1.26953125vw, 18px); font-weight: 400; }
-.page-about .site-nav > a[aria-current] { color: #fff; }
-.page-about .site-nav > a[aria-current]::after { bottom: 6px; height: 3px; background: #ff7800; }
-.page-about .more summary .icon { width: 12px; height: 12px; }
-.page-about .header-quote { min-height: clamp(37px, 3.61328125vw, 52px); padding: .7em 1.05em; font-size: clamp(12px, 1.26953125vw, 18px); color: #fff; background: linear-gradient(180deg, #ff8300, #fc6500); border: 0; box-shadow: none; border-radius: 8px; }
 
 .about-reference-page { max-width: 1440px; margin-inline: auto; container-type: inline-size; background: #fff; }
 .about-ref-wrap { width: 90.625%; margin-inline: auto; }
@@ -24,14 +15,7 @@
 
 /* The untouched image is used as a source sheet. CSS isolates photo regions;
    native headings replace the raster letters for clear zoom and accessibility. */
-.about-ref-hero { height: 34.86328125cqw; position: relative; isolation: isolate; overflow: hidden; color: #fff; background: linear-gradient(105deg, #001832 0%, #003571 47%, #0764a3 68%); }
-.about-ref-hero-art { position: absolute; z-index: -1; inset: 0; background: url('about-reference.webp') center 4.580153% / 100% 430.252101% no-repeat; mask-image: linear-gradient(90deg, transparent 0%, transparent 43%, #000 53%), linear-gradient(0deg, #000 0%, #000 19%, transparent 30%); }
-.about-ref-hero-copy { padding-top: 4.00390625cqw; }
-.about-ref-hero-copy::before, .about-ref-who-copy h2::before, .about-ref-why-copy h2::before { display: block; content: ''; width: 5.46875cqw; height: .78125cqw; background: #ff7900; transform: skewX(-20deg) rotate(-1deg); }
-.about-ref-hero-copy::before { margin: 0 0 1.3671875cqw .29296875cqw; }
-.about-ref-hero h1 { font-size: 6.25cqw; letter-spacing: -.04em; line-height: 1.03; font-style: italic; font-weight: 900; }
-.about-ref-hero-copy > p { margin-top: .9765625cqw; font-size: 2.734375cqw; font-style: italic; font-weight: 600; line-height: 1.07; letter-spacing: -.025em; }
-.about-ref-hero-copy::after { content: ''; display: block; margin: 1.66015625cqw 0 0 .29296875cqw; width: 12.890625cqw; height: .68359375cqw; background: #ff7900; transform: skewX(-22deg); }
+.about-ref-who-copy h2::before, .about-ref-why-copy h2::before { display: block; content: ''; width: 5.46875cqw; height: .78125cqw; background: #ff7900; transform: skewX(-20deg) rotate(-1deg); }
 
 .about-ref-who { min-height: 34.1796875cqw; position: relative; }
 .about-ref-who .about-ref-wrap { position: relative; width: 100%; min-height: 34.1796875cqw; }
@@ -95,26 +79,9 @@
 .about-ref-cta-actions .about-ref-contact { min-width: 13.28125cqw; background: #17203a4d; border: 2px solid #fff; color: #fff; }
 .about-ref-cta-actions .about-ref-contact:hover { background: #17203a; }
 
-@media (max-width: 960px) {
-  .page-about .header-inner { min-height: 66px; width: calc(100% - 40px); }
-  .page-about .brand-word { font-size: 34px; }
-  .page-about .site-nav { gap: 0; max-height: calc(100dvh - 66px); }
-  .page-about .site-nav > a:not(.button), .page-about .more summary { font-size: 16px; min-height: 46px; font-weight: 600; }
-  .page-about .site-nav > a[aria-current]::after { bottom: 7px; height: auto; }
-  .page-about .site-nav .nav-quote { color: #fff; background: #ef6e00; }
-  .page-about .more-panel a { font-size: 15px; }
-}
-
 /* Mobile preserves the supplied content and photographs, with readable reflow. */
 @media (max-width: 960px) {
   .about-ref-wrap { width: calc(100% - 40px); }
-  .about-ref-hero { height: 570px; background: linear-gradient(110deg, #00172f, #034077); }
-  .about-ref-hero-art { inset: auto 0 0; height: 290px; background-size: auto 430.252101%; background-position: right 4.580153%; mask-image: linear-gradient(180deg, transparent, #000 26%), linear-gradient(90deg, transparent calc(100% - 474px), #000 calc(100% - 393px)), linear-gradient(0deg, #000 0%, #000 19%, transparent 30%); mask-composite: intersect, add; }
-  .about-ref-hero-copy { padding-top: 30px; }
-  .about-ref-hero-copy::before { width: 46px; height: 6px; margin: 0 0 14px 2px; }
-  .about-ref-hero h1 { font-size: clamp(42px, 12vw, 70px); }
-  .about-ref-hero-copy > p { margin-top: 17px; font-size: clamp(19px, 5.5vw, 28px); line-height: 1.13; letter-spacing: -.035em; }
-  .about-ref-hero-copy::after { margin: 20px 0 0 2px; height: 6px; width: 125px; }
   .about-ref-who { min-height: 0; padding: 30px 0 0; }
   .about-ref-who .about-ref-wrap { min-height: 0; display: flex; flex-direction: column; }
   .about-ref-who-copy { width: auto; padding: 0 22px; }
@@ -169,9 +136,6 @@
   .about-ref-cta-actions .about-ref-contact { min-width: 115px; }
 }
 @media (max-width: 370px) {
-  .page-about .brand-word { font-size: 31px; }
-  .about-ref-hero { height: 550px; }
-  .about-ref-hero-copy > p { font-size: 18px; }
   .about-ref-reasons { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .about-ref-reason:last-child { grid-column: 1 / -1; }
   .about-ref-stat { gap: 16px; padding-inline: 9px; }
