@@ -60,5 +60,5 @@ BENEFITS_BODY = '<div class="reference-page benefits-reference">' + hero(
 
 HOME_BENEFITS_REFERENCE = {
     'index.html': {'title':'Inflatable Billboard Advertising in Ontario','description':'Bigger brands. Bolder events. Higher impact. IMPACTAIR inflatable billboard rentals for festivals, events and marketing campaigns across Ontario.','custom_layout':True,'extra_css':'assets/home-benefits-reference.css','body':HOME_BODY},
-    'benefits.html': {'title':'The Benefits of Advertising with IMPACTAIR','description':'Illumination, high visibility, mobility, indoor placements and super-size inflatable billboards for Ontario festival advertising.','custom_layout':True,'extra_css':'assets/home-benefits-reference.css','no_footer':True,'body':BENEFITS_BODY},
+    'benefits.html': {'title':'The Benefits of Advertising with IMPACTAIR','description':'Illumination, high visibility, mobility, indoor placements and super-size inflatable billboards for Ontario festival advertising.','custom_layout':True,'extra_css':'assets/home-benefits-reference.css','body':BENEFITS_BODY},
 }

@@ -104,7 +104,7 @@ TERMS_ROWS = [
 
 def _page(title, description, body, cls):
     return {'title': title, 'description': description, 'custom_layout': True,
-            'extra_css': 'assets/support-reference.css', 'no_footer': True,
+            'extra_css': 'assets/support-reference.css',
             'body': f'<div class="reference-page support-reference {cls}">{body}</div>'}
 
 

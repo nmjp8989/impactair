@@ -32,7 +32,6 @@ ABOUT_REFERENCE = {
     "description": "IMPACTAIR specializes in high-impact inflatable billboard rentals that give brands unmatched visibility at Ontario’s largest festivals, events and public gatherings.",
     "custom_layout": True,
     "extra_css": "assets/about-reference.css",
-    "no_footer": True,
     "heading": "ABOUT <em>US</em>",
     "kicker": "",
     "intro": "Ontario’s Leader in Inflatable Billboard Advertising for Major Events.",

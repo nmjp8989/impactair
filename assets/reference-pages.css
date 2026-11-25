@@ -66,11 +66,15 @@
 .ref-cta-copy{padding:calc(var(--ref-unit)*2) 0 calc(var(--ref-unit)*3.1);position:relative;z-index:1}
 .ref-cta h2{font-size:clamp(28px,4vw,56px);line-height:1.07;max-width:75%;text-transform:uppercase}
 .ref-cta .ref-actions{margin-top:calc(var(--ref-unit)*1.8)}
-.compact-footer{border:0;background:#001731;color:white}
-.compact-footer-main{width:90%;max-width:1310px;min-height:64px;display:flex;align-items:center;gap:4vw;margin-inline:auto}
-.compact-footer .brand-word{font-size:28px}.compact-footer-main>a:not(.brand),.compact-footer-main>span{display:flex;align-items:center;gap:13px;font-size:14px;text-decoration:none;border-left:1px solid #b9c9d8;padding-left:4vw;min-height:30px}
-.compact-footer .icon{width:20px;height:20px}.compact-footer-main a:hover{color:var(--ref-cyan)}
-.compact-footer-legal{display:flex;justify-content:center;gap:24px;border-top:1px solid #ffffff1c;padding:10px 20px;font-size:13px;color:#c5d9e9}.compact-footer-legal a{text-decoration:none;min-height:28px;display:inline-flex;align-items:center}
+.reference-footer{border:0;background:linear-gradient(110deg,#00152f,#001a38);color:white}
+.reference-footer-inner{width:95%;max-width:1440px;min-height:126px;padding:28px 0;display:flex;align-items:center;gap:clamp(20px,2.5vw,36px);margin-inline:auto}
+.reference-footer .brand .brand-word{font-size:clamp(30px,4vw,44px)}
+.reference-footer-nav{display:flex;align-items:center;justify-content:space-between;flex:1;min-width:0}
+.reference-footer-nav a{display:flex;align-items:center;justify-content:center;min-height:36px;padding:3px clamp(10px,1.8vw,26px);border-left:1px solid #dce9f1;color:white;font-size:clamp(16px,1.8vw,22px);font-weight:400;line-height:1.2;white-space:nowrap;text-decoration:none}
+.reference-footer-nav a:last-child{padding-right:0}
+.reference-footer-nav a:hover,.reference-footer-nav a[aria-current]{color:var(--ref-cyan)}
+.reference-footer-nav a:focus-visible{outline:3px solid var(--ref-cyan);outline-offset:4px}
+@media(max-width:960px){.reference-footer-inner{flex-direction:column;gap:24px;width:calc(100% - 40px);padding-block:30px}.reference-footer-nav{width:100%}.reference-footer-nav a{font-size:16px;padding-inline:12px;min-height:44px}.reference-footer-nav a:first-child{border:0;padding-left:0}.reference-footer .brand .brand-word{font-size:36px}}
 .reference-page a:focus-visible{outline:3px solid #00a5d1;outline-offset:4px}
 @media(min-width:1600px){.ref-hero>.ref-wrap,.ref-cta>.ref-wrap{width:1310px}.ref-hero-art,.ref-cta-art{right:calc((100vw - 1600px)/2)}}
 @media(max-width:1100px) and (min-width:961px){.site-header .header-inner{gap:20px}.site-nav{gap:22px}.site-nav>a:not(.button),.site-nav .more summary{font-size:14px}.site-header .brand-word{font-size:36px}.header-quote{font-size:14px;padding-inline:13px}.header-quote .icon{display:none}}
@@ -97,6 +101,6 @@
  .ref-stat{flex-direction:column;gap:7px;text-align:center;padding:0 5px;min-height:90px;justify-content:center}.ref-stat .ref-icon{width:27px;height:27px}.ref-stat strong{font-size:33px}.ref-stat span{font-size:14px}.ref-stat-audience strong{font-size:clamp(18px,5.4vw,28px)}.ref-stat-season span{font-size:12px;white-space:normal;line-height:1.2}.ref-stat-season strong{font-size:34px}
  .ref-strip{padding:24px 20px;gap:23px 0}.ref-strip>div{padding:0 10px;gap:12px;justify-content:flex-start}.ref-strip>div>span{font-size:16px}.ref-strip>div:nth-child(odd){padding-left:0}.ref-strip .ref-icon{width:35px;height:35px}
  .ref-cta{min-height:370px;padding-bottom:135px}.ref-cta-art{top:auto;height:250px;background-size:auto var(--cta-size);background-position:right var(--cta-y);mask-image:linear-gradient(0deg,#000,transparent 95%)}.ref-cta h2{font-size:32px;max-width:100%}.ref-cta-copy{padding:30px 0}.ref-cta .ref-actions{margin-top:22px}
- .compact-footer-main{flex-wrap:wrap;padding-block:24px;gap:20px;width:calc(100% - 40px)}.compact-footer-main .brand{flex-basis:100%}.compact-footer-main>a:not(.brand),.compact-footer-main>span{border:none;padding:0;font-size:14px}.compact-footer-legal{font-size:13px;gap:20px}
+ .reference-footer-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 0}.reference-footer-nav a{padding:4px 10px;min-height:44px;white-space:normal;text-align:center}.reference-footer-nav a:nth-child(odd){border:0}.reference-footer-nav a:first-child,.reference-footer-nav a:last-child{padding-inline:10px}.reference-footer .brand .brand-word{font-size:32px}
 }
 @media(prefers-reduced-motion:reduce){.ref-button{transition:none}}

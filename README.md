@@ -1,8 +1,12 @@
 # IMPACTAIR
 
-Static, responsive website implementing the eleven supplied desktop page designs: Home, About Us, Benefits, Why Festivals, 2027 Festival Opportunities, Festival Categories, Contact Us, Careers, Privacy Policy, Terms of Use and Artwork Specifications. Headings, copy, controls and diagrams are HTML/SVG; CSS selects photographic regions from the original reference artwork.
+Static, responsive website implementing twelve supplied desktop page designs: Home, About Us, Benefits, Why Festivals, 2027 Festival Opportunities, Festival Categories, Contact Us, Careers, Privacy Policy, Terms of Use, Artwork Specifications and For Advertising Agencies. Headings, copy, controls and diagrams are HTML/SVG; CSS selects photographic regions from the original reference artwork.
 
-All **19 routes** share the same logo and navigation, including the Solutions, Festivals and More dropdowns. The eight retained resource routes are `advertising-solutions.html`, `billboard-specifications.html`, `case-studies.html`, `faq.html`, `festivals-events.html`, `for-advertising-agencies.html`, `gallery.html` and `rental-options.html`. Their existing content and interactions, including gallery filtering and previews, remain available.
+All **17 routes** share the same logo and navigation, including the Solutions, Festivals and More dropdowns. The five retained resource routes are `advertising-solutions.html`, `billboard-specifications.html`, `faq.html`, `festivals-events.html` and `gallery.html`. Their existing content and interactions, including gallery filtering and previews, remain available.
+
+The simplified main navigation is Home, About, Solutions, Festivals, More and Request a Quote. Solutions contains Benefits, Artwork Specifications and For Advertising Agencies; Festivals contains Why Festivals and Festival Categories. Advertising Solutions, Billboard Specifications, 2027 Festival Opportunities and Gallery retain their direct URLs but are omitted from the navigation. The Rentals and Case Studies pages have been removed.
+
+Every route also has the same bottom navigation: **About, Careers, Contact, FAQ, Privacy Policy and Terms of Use**, in that order. One shared footer is rendered after each page's main content, including About; page-specific closing call-to-action sections remain intact.
 
 ## Build and publish
 
@@ -10,7 +14,7 @@ All **19 routes** share the same logo and navigation, including the Solutions, F
 python scripts/build_site.py
 ```
 
-The generator requires only Python's standard library. It writes the eleven reference pages, refreshes the shared header/footer on the eight retained routes, versions stylesheet/script URLs, and copies the site into an ignored `dist/` directory for preview. Commit the source changes and generated root HTML together.
+The generator requires only Python's standard library. It writes the twelve reference pages, refreshes the shared header/footer on the five retained routes, versions stylesheet/script URLs, and copies the site into an ignored `dist/` directory for preview, removing stale HTML outputs. Commit the source changes and generated root HTML together.
 
 GitHub Pages serves the repository's `main` branch from `/` (root), with `index.html` as the homepage, at https://nmjp8989.github.io/impactair/. Deployment needs no package installation, application server or additional build step.
 
@@ -24,18 +28,19 @@ GitHub Pages serves the repository's `main` branch from `/` (root), with `index.
 | `scripts/about_reference.py` | Preserved approved About composition and copy |
 | `scripts/festival_reference.py` | Why Festivals, 2027 Opportunities and Festival Categories |
 | `scripts/support_reference.py` | Contact, Careers, Privacy, Terms and Artwork Specifications |
-| `assets/reference-pages.css` | Shared reference styling and consistent navigation across all routes |
+| `scripts/agency_reference.py`, `assets/agency-reference.css` | For Advertising Agencies reference content and layout |
+| `assets/reference-pages.css` | Shared reference styling and consistent header/footer navigation across all routes |
 | `assets/*-reference.css` | Page-specific reference layouts and responsive reflow |
-| `assets/impactair.css`, `assets/impactair.js` | Base styling, navigation and enquiry behavior for the eleven generated pages |
+| `assets/impactair.css`, `assets/impactair.js` | Base styling, navigation and enquiry behavior for the twelve generated pages |
 | `assets/site.css`, `assets/site.js`, `assets/legacy-theme.css` | Retained resource styling and behavior |
 
-`scripts/main_pages.py` and `scripts/support_pages.py` retain the earlier base definitions; the reference modules override their page content in the build. Edit the active reference module for these eleven pages.
+`scripts/main_pages.py` and `scripts/support_pages.py` retain the earlier base definitions; the reference modules provide the active page content in the build. Edit the appropriate reference module for these twelve pages.
 
 ## Artwork and responsive behavior
 
-The eleven 1024 × 1536 source PNGs in `assets/references/` are unchanged copies of the supplied designs. They are used as photographic source sheets, not flattened complete webpages. Native text, SVG icons and vector measurement diagrams stay sharp at browser zoom; photographic detail remains limited to the pixels in the supplied artwork. No higher-resolution photo source is implied by displaying a crop at a larger size. See `assets/ASSETS.md` for provenance and URL/cropping conventions.
+The twelve 1024 × 1536 source PNGs in `assets/references/`, including `agencies.png`, are unchanged copies of the supplied designs. They are used as photographic source sheets, not flattened complete webpages. Native text, SVG icons and vector measurement diagrams stay sharp at browser zoom; photographic detail remains limited to the pixels in the supplied artwork. No higher-resolution photo source is implied by displaying a crop at a larger size. See `assets/ASSETS.md` for provenance and URL/cropping conventions.
 
-The approved About body is preserved, including its full-width hero and closing call to action, 1440 px middle-content cap, mobile reflow, local fonts and pixel-identical lossless WebP source. It uses the same shared header as the other routes.
+The approved About body is preserved, including its full-width hero and closing call to action, 1440 px middle-content cap, mobile reflow, local fonts and pixel-identical lossless WebP source. It uses the same shared header as the other routes. The shared bottom navigation is appended after that body at the user's request.
 
 ## Enquiries and supplied content
 

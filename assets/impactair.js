@@ -51,6 +51,7 @@ const quoteForm = document.querySelector('form#quote');
 if (quoteForm) {
   const interest = new URLSearchParams(location.search).get('interest');
   const topics = {
+    agency: 'An advertising agency client campaign',
     festivals: 'Festival advertising',
     '2027': '2027 festival campaign',
     'festival-advertising': 'Festival advertising',

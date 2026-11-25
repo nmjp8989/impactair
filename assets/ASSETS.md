@@ -2,7 +2,7 @@
 
 ## Current supplied references
 
-All eleven files below are **unchanged 1024 × 1536 PNG copies** of the user's supplied desktop designs. Their contents are preserved at the original resolution.
+All twelve files below are **unchanged 1024 × 1536 PNG copies** of the user's supplied desktop designs. Their contents are preserved at the original resolution.
 
 | File in `assets/references/` | Supplied design |
 | --- | --- |
@@ -17,8 +17,9 @@ All eleven files below are **unchanged 1024 × 1536 PNG copies** of the user's s
 | `privacy.png` | Privacy Policy |
 | `terms.png` | Terms of Use |
 | `artwork.png` | Artwork Specifications |
+| `agencies.png` | For Advertising Agencies |
 
-The website reconstructs the supplied layouts using HTML, CSS and SVG. Source sheets supply photographic regions through clipped image elements or masked CSS backgrounds. Page headings, body copy, statistics, form controls, navigation, buttons, icons and technical dimensions remain live text/vector content. The Privacy and Terms bodies use native text; the artwork diagrams are in `artwork-diagrams.svg`.
+The website reconstructs the supplied layouts using HTML, CSS and SVG. Source sheets supply photographic regions through clipped image elements or masked CSS backgrounds. Page headings, body copy, statistics, form controls, navigation, buttons, icons and technical dimensions remain live text/vector content. The Privacy and Terms bodies use native text; the artwork diagrams are in `artwork-diagrams.svg`. `scripts/agency_reference.py` and `assets/agency-reference.css` implement the additional For Advertising Agencies design using the unchanged `references/agencies.png` source.
 
 CSS cropping does not create new image detail. These photographs have the resolution present in the supplied 1024 px-wide sheets; displaying them larger can soften them. No generated replacement or invented higher-resolution master is claimed for the current reference implementation. Keep the original files unchanged, avoid lossy resaves, and use native text/SVG for editable labels.
 
@@ -36,7 +37,7 @@ About retains its separately approved implementation:
 | --- | --- |
 | `source/about-reference.png` — 1024 × 1536 | `about-reference.webp` — pixel-identical lossless WebP |
 
-`about-reference.css` selects its photographic regions. `scripts/about_reference.py` supplies the exact requested copy, statistics and structure; `about-icons.svg`, `fonts/about-display.woff` and `fonts/about-headings.woff` supply the body icons and typography. The hero and closing call to action span the page width; the middle content is capped at 1440 px and reflows on mobile. The body does not render a footer and shares the site's current navigation.
+`about-reference.css` selects its photographic regions. `scripts/about_reference.py` supplies the exact requested copy, statistics and structure; `about-icons.svg`, `fonts/about-display.woff` and `fonts/about-headings.woff` supply the body icons and typography. The hero and closing call to action span the page width; the middle content is capped at 1440 px and reflows on mobile. This approved body is preserved, with the site's shared footer appended after it at the user's request.
 
 ## Existing promotional and historical assets
 
@@ -55,5 +56,7 @@ Historical `design-*` and other assets remain for existing resources. Some conta
 ## Vector assets, typography and content attribution
 
 The shared wordmark is native text/CSS. `icons.svg`, `reference-icons.svg`, `about-icons.svg`, inline SVG and `artwork-diagrams.svg` keep interface and measurement graphics scalable. Fonts are hosted locally; their license is in `fonts/DejaVu-LICENSE.txt`.
+
+All 17 routes use the same native bottom-navigation links: About, Careers, Contact, FAQ, Privacy Policy and Terms of Use. The footer is generated once per page by `scripts/build_site.py`; original reference artwork is not altered to change the navigation.
 
 Campaign statistics and event names reproduce the supplied copy and are not independently verified audience or schedule data. Technical dimensions follow the Artwork Specifications reference: 40 ft × 22 ft with a 35.43 ft × 15.74 ft safe area, and 20 ft × 20 ft with a 17.72 ft × 14.31 ft safe area. Benefits uses the same 40 ft × 22 ft overall dimensions for consistency.

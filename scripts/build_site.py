@@ -11,10 +11,11 @@ from about_reference import ABOUT_REFERENCE
 from home_benefits_reference import HOME_BENEFITS_REFERENCE
 from festival_reference import FESTIVAL_REFERENCE
 from support_reference import SUPPORT_REFERENCE
+from agency_reference import AGENCY_REFERENCE
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {**MAIN_PAGES, **SUPPORT_PAGES, 'about.html': ABOUT_REFERENCE,
-         **HOME_BENEFITS_REFERENCE, **FESTIVAL_REFERENCE, **SUPPORT_REFERENCE}
+         **HOME_BENEFITS_REFERENCE, **FESTIVAL_REFERENCE, **SUPPORT_REFERENCE, **AGENCY_REFERENCE}
 ORIGIN = 'https://nmjp8989.github.io/impactair/'
 ABOUT_REVISION = sha256(
     (ROOT/'scripts/about_reference.py').read_bytes()
@@ -40,9 +41,9 @@ def navlink(path, label, current):
 
 
 def header(current):
-    solutions = [('advertising-solutions.html','Advertising Solutions'),('benefits.html','Benefits'),('billboard-specifications.html','Billboard Specifications'),('artwork-specifications.html','Artwork Specifications'),('for-advertising-agencies.html','For Advertising Agencies')]
-    festivals = [('festivals.html','Why Festivals?'),('2027-festival-opportunities.html','2027 Festival Opportunities'),('festival-categories.html','Festival Categories')]
-    extra = [('contact.html','Contact Us'),('careers.html','Careers'),('faq.html','Frequently Asked Questions'),('case-studies.html','Case Studies'),('privacy-policy.html','Privacy Policy'),('terms-of-use.html','Terms of Use')]
+    solutions = [('benefits.html','Benefits'),('artwork-specifications.html','Artwork Specifications'),('for-advertising-agencies.html','For Advertising Agencies')]
+    festivals = [('festivals.html','Why Festivals?'),('festival-categories.html','Festival Categories')]
+    extra = [('contact.html','Contact Us'),('careers.html','Careers'),('faq.html','Frequently Asked Questions'),('privacy-policy.html','Privacy Policy'),('terms-of-use.html','Terms of Use')]
     def dropdown(label, items):
         active = ' is-current' if current in [path for path,_ in items] else ''
         return f'<details class="more{active}"><summary>{label} {icon("chevron-down")}</summary><div class="more-panel">'+''.join(navlink(*x,current) for x in items)+'</div></details>'
@@ -52,7 +53,7 @@ def header(current):
   <nav class="site-nav" id="site-nav" aria-label="Main navigation">
     {navlink('index.html','Home',current)}{navlink('about.html','About',current)}
     {dropdown('Solutions',solutions)}{dropdown('Festivals',festivals)}
-    {navlink('gallery.html','Gallery',current)}{navlink('rental-options.html','Rentals',current)}{dropdown('More',extra)}
+    {dropdown('More',extra)}
     <a class="button nav-quote" href="contact.html#quote">Request a Quote</a>
   </nav>
   <a class="button header-quote" href="contact.html#quote">Request a Quote {icon('arrow-right')}</a>
@@ -60,7 +61,8 @@ def header(current):
 
 
 def footer(current):
-    return f'''<footer class="site-footer compact-footer"><div class="compact-footer-main">{brand()}<a href="mailto:info@impactair.ca">{icon('mail')}info@impactair.ca</a><span>{icon('pin')}Toronto, Ontario</span></div><nav class="compact-footer-legal" aria-label="Legal and contact">{navlink('privacy-policy.html','Privacy Policy',current)}{navlink('terms-of-use.html','Terms of Use',current)}{navlink('contact.html','Contact',current)}</nav></footer>'''
+    links = [('about.html','About'),('careers.html','Careers'),('contact.html','Contact'),('faq.html','FAQ'),('privacy-policy.html','Privacy Policy'),('terms-of-use.html','Terms of Use')]
+    return f'''<footer class="site-footer reference-footer"><div class="reference-footer-inner">{brand()}<nav class="reference-footer-nav" aria-label="Footer navigation">{''.join(navlink(*x,current) for x in links)}</nav></div></footer>'''
 
 
 def hero(data):
@@ -92,7 +94,7 @@ def document(path, data):
 </head><body class="modern-site page-{path.removesuffix('.html')}">
 {header(path)}
 <main id="main">{'' if data.get('custom_layout') else hero(data)}{data['body']}</main>
-{'' if data.get('no_footer') else footer(path)}
+{footer(path)}
 </body></html>
 '''
     # A hidden mobile line break must still leave a word boundary.
@@ -104,7 +106,7 @@ def main():
     for path, data in PAGES.items():
         (ROOT/path).write_text(document(path,data),encoding='utf-8')
     # Old inbound URLs keep working; the new navigation is the default experience.
-    for name in ('advertising-solutions.html','billboard-specifications.html','case-studies.html','faq.html','festivals-events.html','for-advertising-agencies.html','gallery.html','rental-options.html'):
+    for name in ('advertising-solutions.html','billboard-specifications.html','faq.html','festivals-events.html','gallery.html'):
         p = ROOT/name
         if not p.exists():
             continue
@@ -122,6 +124,9 @@ def main():
     # Staging directory is preview-only; GitHub Pages serves the checked-in root.
     dist=ROOT/'dist'
     dist.mkdir(exist_ok=True)
+    for path in dist.glob('*.html'):
+        if not (ROOT/path.name).exists():
+            path.unlink()
     for path in ROOT.glob('*.html'):
         shutil.copy2(path,dist/path.name)
     shutil.copytree(ROOT/'assets',dist/'assets',dirs_exist_ok=True,ignore=shutil.ignore_patterns('source'))

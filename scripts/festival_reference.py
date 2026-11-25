@@ -9,7 +9,7 @@ from design_common import icon, photo, hero, stats, button, strip
 def page(title, description, body):
     return {
         'title': title, 'description': description, 'custom_layout': True,
-        'extra_css': 'assets/festival-reference.css', 'no_footer': True,
+        'extra_css': 'assets/festival-reference.css',
         'body': body,
     }
 
