@@ -8,9 +8,13 @@ import shutil
 from main_pages import MAIN_PAGES, icon
 from support_pages import SUPPORT_PAGES
 from about_reference import ABOUT_REFERENCE
+from home_benefits_reference import HOME_BENEFITS_REFERENCE
+from festival_reference import FESTIVAL_REFERENCE
+from support_reference import SUPPORT_REFERENCE
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = {**MAIN_PAGES, **SUPPORT_PAGES, 'about.html': ABOUT_REFERENCE}
+PAGES = {**MAIN_PAGES, **SUPPORT_PAGES, 'about.html': ABOUT_REFERENCE,
+         **HOME_BENEFITS_REFERENCE, **FESTIVAL_REFERENCE, **SUPPORT_REFERENCE}
 ORIGIN = 'https://nmjp8989.github.io/impactair/'
 ABOUT_REVISION = sha256(
     (ROOT/'scripts/about_reference.py').read_bytes()
@@ -36,29 +40,27 @@ def navlink(path, label, current):
 
 
 def header(current):
-    primary = [('index.html','Home'),('about.html','About Us'),('benefits.html','Benefits'),('festivals.html','Festivals'),('contact.html','Contact')]
-    extra = [('2027-festival-opportunities.html','2027 Opportunities'),('festival-categories.html','Festival Categories'),('artwork-specifications.html','Artwork Specifications'),('careers.html','Careers')]
+    solutions = [('advertising-solutions.html','Advertising Solutions'),('benefits.html','Benefits'),('billboard-specifications.html','Billboard Specifications'),('artwork-specifications.html','Artwork Specifications'),('for-advertising-agencies.html','For Advertising Agencies')]
+    festivals = [('festivals.html','Why Festivals?'),('2027-festival-opportunities.html','2027 Festival Opportunities'),('festival-categories.html','Festival Categories')]
+    extra = [('contact.html','Contact Us'),('careers.html','Careers'),('faq.html','Frequently Asked Questions'),('case-studies.html','Case Studies'),('privacy-policy.html','Privacy Policy'),('terms-of-use.html','Terms of Use')]
+    def dropdown(label, items):
+        active = ' is-current' if current in [path for path,_ in items] else ''
+        return f'<details class="more{active}"><summary>{label} {icon("chevron-down")}</summary><div class="more-panel">'+''.join(navlink(*x,current) for x in items)+'</div></details>'
     return f'''<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="wrap header-inner">{brand()}
   <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav" hidden>{icon('menu')}{icon('close')}</button>
   <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-    {''.join(navlink(*x, current) for x in primary)}
-    <details class="more"><summary>Explore {icon('chevron-down')}</summary><div class="more-panel">{''.join(navlink(*x,current) for x in extra)}</div></details>
+    {navlink('index.html','Home',current)}{navlink('about.html','About',current)}
+    {dropdown('Solutions',solutions)}{dropdown('Festivals',festivals)}
+    {navlink('gallery.html','Gallery',current)}{navlink('rental-options.html','Rentals',current)}{dropdown('More',extra)}
     <a class="button nav-quote" href="contact.html#quote">Request a Quote</a>
   </nav>
-  <a class="button header-quote" href="contact.html#quote">Request a Quote</a>
+  <a class="button header-quote" href="contact.html#quote">Request a Quote {icon('arrow-right')}</a>
 </div></header>'''
 
 
 def footer(current):
-    explore = [('index.html','Home'),('about.html','About Us'),('benefits.html','Benefits'),('festivals.html','Festivals & Events')]
-    resources = [('2027-festival-opportunities.html','2027 Opportunities'),('festival-categories.html','Festival Categories'),('artwork-specifications.html','Artwork Specifications'),('careers.html','Careers'),('contact.html','Contact Us')]
-    return f'''<footer class="site-footer"><div class="wrap footer-inner">
-  <div class="footer-brand">{brand()}<p>Bigger brands. Bolder events.<br>Higher impact.</p><a class="footer-email" href="mailto:info@impactair.ca">info@impactair.ca</a><p>Toronto &amp; across Ontario</p></div>
-  <nav aria-label="Explore ImpactAir"><h2>Explore</h2>{''.join(navlink(*x,current) for x in explore)}</nav>
-  <nav aria-label="Planning resources"><h2>Plan your impact</h2>{''.join(navlink(*x,current) for x in resources)}</nav>
-  <div class="footer-invitation"><p class="eyebrow">Your next big moment</p><h2>Let’s make<br><em>an impact.</em></h2><a class="button" href="contact.html#quote">Get Started</a></div>
-</div><div class="wrap footer-bottom"><span>© 2026 IMPACTAIR. All rights reserved.</span><nav aria-label="Legal">{navlink('privacy-policy.html','Privacy Policy',current)}{navlink('terms-of-use.html','Terms of Use',current)}</nav></div></footer>'''
+    return f'''<footer class="site-footer compact-footer"><div class="compact-footer-main">{brand()}<a href="mailto:info@impactair.ca">{icon('mail')}info@impactair.ca</a><span>{icon('pin')}Toronto, Ontario</span></div><nav class="compact-footer-legal" aria-label="Legal and contact">{navlink('privacy-policy.html','Privacy Policy',current)}{navlink('terms-of-use.html','Terms of Use',current)}{navlink('contact.html','Contact',current)}</nav></footer>'''
 
 
 def hero(data):
@@ -86,13 +88,15 @@ def document(path, data):
   <meta property="og:type" content="website"><meta property="og:image" content="{ORIGIN}assets/hero-festival.webp">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/impact-display.woff" as="font" type="font/woff" crossorigin>
-  <link rel="stylesheet" href="{asset_url('assets/impactair.css')}"><script src="{asset_url('assets/impactair.js')}" defer></script>{extra_head}
+  <link rel="stylesheet" href="{asset_url('assets/impactair.css')}"><link rel="stylesheet" href="{asset_url('assets/reference-pages.css')}"><script src="{asset_url('assets/impactair.js')}" defer></script>{extra_head}
 </head><body class="modern-site page-{path.removesuffix('.html')}">
 {header(path)}
 <main id="main">{'' if data.get('custom_layout') else hero(data)}{data['body']}</main>
 {'' if data.get('no_footer') else footer(path)}
 </body></html>
 '''
+    # A hidden mobile line break must still leave a word boundary.
+    html = re.sub(r'(?<=\S)(<br\b[^>]*>)', r' \1', html)
     return re.sub(r'[ \t]+\n', '\n', html)
 
 
@@ -106,10 +110,14 @@ def main():
             continue
         text = p.read_text()
         text = re.sub(r'<a class="skip-link"[^>]*>.*?</header>', header(name), text, flags=re.S)
-        text = re.sub(r'<footer class="site-footer">.*?</footer>', footer(name), text, flags=re.S)
+        text = re.sub(r'<footer class="site-footer[^\"]*">.*?</footer>', footer(name), text, flags=re.S)
         if 'assets/legacy-theme.css' not in text:
             text = text.replace('<link rel="stylesheet" href="assets/site.css">', '<link rel="stylesheet" href="assets/site.css">\n  <link rel="stylesheet" href="assets/legacy-theme.css">')
         text = text.replace('href="assets/logo.webp"','href="assets/favicon.svg"')
+        text = re.sub(r'href="assets/legacy-theme.css[^\"]*"', f'href="{asset_url("assets/legacy-theme.css")}"', text)
+        text = re.sub(r'\s*<link rel="stylesheet" href="assets/reference-pages.css[^\"]*">', '', text)
+        text = text.replace('</head>', f'  <link rel="stylesheet" href="{asset_url("assets/reference-pages.css")}">\n</head>')
+        text = re.sub(r'src="assets/site.js[^\"]*"', f'src="{asset_url("assets/site.js")}"', text)
         p.write_text(text)
     # Staging directory is preview-only; GitHub Pages serves the checked-in root.
     dist=ROOT/'dist'

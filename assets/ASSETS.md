@@ -1,49 +1,59 @@
-# Production artwork
+# Artwork provenance and delivery
 
-The eleven mobile PNGs in the supplied ZIP are visual design references. They include phone frames and are not used as flattened webpage images.
+## Current supplied references
 
-## User-supplied About Us desktop reference
+All eleven files below are **unchanged 1024 × 1536 PNG copies** of the user's supplied desktop designs. Their contents are preserved at the original resolution.
 
-The About Us page matches the user-supplied desktop reference’s photography, exact copy, body typography, cards and section composition. The existing shared site logo and navigation remain unchanged. The original reference is preserved separately from the generated promotional assets below.
+| File in `assets/references/` | Supplied design |
+| --- | --- |
+| `home.png` | Home |
+| `about.png` | About Us |
+| `benefits.png` | Benefits |
+| `festivals.png` | Why Festivals |
+| `opportunities.png` | 2027 Festival Opportunities |
+| `categories.png` | Festival Categories |
+| `contact.png` | Contact Us |
+| `careers.png` | Careers |
+| `privacy.png` | Privacy Policy |
+| `terms.png` | Terms of Use |
+| `artwork.png` | Artwork Specifications |
 
-| Source | Native dimensions | Website delivery |
+The website reconstructs the supplied layouts using HTML, CSS and SVG. Source sheets supply photographic regions through clipped image elements or masked CSS backgrounds. Page headings, body copy, statistics, form controls, navigation, buttons, icons and technical dimensions remain live text/vector content. The Privacy and Terms bodies use native text; the artwork diagrams are in `artwork-diagrams.svg`.
+
+CSS cropping does not create new image detail. These photographs have the resolution present in the supplied 1024 px-wide sheets; displaying them larger can soften them. No generated replacement or invented higher-resolution master is claimed for the current reference implementation. Keep the original files unchanged, avoid lossy resaves, and use native text/SVG for editable labels.
+
+### Crop and URL conventions
+
+`scripts/design_common.py` supplies common crop helpers; `scripts/support_reference.py` supplies the supporting-page equivalents. Photo elements preserve the source aspect ratio, use `max-width: none` and select the required region with offsets/transforms. Background masks suppress the reference's original interface text while revealing its scenery.
+
+An ordinary HTML image uses `src="assets/references/home.png"`. A URL custom property consumed by a stylesheet inside `assets/` uses `url('references/home.png')`. Retain this distinction: `url('assets/references/home.png')` in that background custom property resolves to an incorrect doubled `assets/assets/` path. Verify background rendering in a browser after changing crop helpers; a file-existence scan alone does not establish CSS URL behavior.
+
+## Preserved approved About artwork
+
+About retains its separately approved implementation:
+
+| Source | Delivery |
+| --- | --- |
+| `source/about-reference.png` — 1024 × 1536 | `about-reference.webp` — pixel-identical lossless WebP |
+
+`about-reference.css` selects its photographic regions. `scripts/about_reference.py` supplies the exact requested copy, statistics and structure; `about-icons.svg`, `fonts/about-display.woff` and `fonts/about-headings.woff` supply the body icons and typography. The hero and closing call to action span the page width; the middle content is capped at 1440 px and reflows on mobile. The body does not render a footer and shares the site's current navigation.
+
+## Existing promotional and historical assets
+
+Earlier generated promotional concepts remain available for retained resource pages and social-sharing metadata. They illustrate campaign settings, not confirmed festival participation, and are not higher-resolution copies of the new references.
+
+| Earlier master in `assets/source/` | Native size | Existing delivery |
 | --- | --- | --- |
-| `source/about-reference.png` | 1024 × 1536 | `about-reference.webp` — lossless WebP at the original dimensions |
+| `hero-festival.png` | 1672 × 941 | `hero-festival.webp` and 768/1280-width variants |
+| `festival-music.png` | 1536 × 1024 | `festival-music.webp` and 768/1280-width variants |
+| `festival-food.png` | 1536 × 1024 | `festival-food.webp` and 768/1280-width variants |
+| `festival-culture.png` | 1536 × 1024 | `festival-culture.webp` and 768/1280-width variants |
+| `festival-community.png` | 1536 × 1024 | `festival-community.webp` and 768/1280-width variants |
 
-The PNG is an unchanged copy of the supplied artwork. The lossless WebP is pixel-identical to that source and is used by `about-reference.css` as a source sheet for the photographic regions. Headings, body copy, statistics, buttons and icons are native HTML/SVG, not flattened screenshot text. The page uses the dedicated local `about-display.woff` and `about-headings.woff` body fonts and `about-icons.svg` to reproduce the reference treatment.
+Historical `design-*` and other assets remain for existing resources. Some contain an older red-logo treatment; they are not the visual source for the current navy/cyan/orange reference pages. The older mobile thumbnails are design records, not large-image sources.
 
-The About stylesheet is scoped to the page content and does not override the shared logo, header or navigation. The top hero and closing call to action span the full page width. Between them, `.about-ref-content` caps the middle sections at 1440 px and rearranges them for mobile. The page ends at the closing call to action, with no footer. The generator versions the About stylesheet URL and About HTML navigation links to avoid serving the prior layout from cache.
+## Vector assets, typography and content attribution
 
-`scripts/about_reference.py` contains the exact requested copy, including **50 Festivals**, **7 Million People**, and **June–September 2027**. These are user-requested statements from the desktop reference, not independently verified event or audience data. This separate reference does not change the original ZIP’s notice that its sample contact information and festival dates are illustrative.
+The shared wordmark is native text/CSS. `icons.svg`, `reference-icons.svg`, `about-icons.svg`, inline SVG and `artwork-diagrams.svg` keep interface and measurement graphics scalable. Fonts are hosted locally; their license is in `fonts/DejaVu-LICENSE.txt`.
 
-## New image masters
-
-The following promotional concept images were created with the built-in image generation tool to provide larger, clean artwork in the supplied navy/cyan/orange visual style. They illustrate campaign settings and do not document confirmed festival participation.
-
-| Master | Native dimensions | Website delivery |
-| --- | --- | --- |
-| `source/hero-festival.png` | 1672 × 941 | `hero-festival.webp` and 768/1280-width variants |
-| `source/festival-music.png` | 1536 × 1024 | `festival-music.webp` and 768/1280-width variants |
-| `source/festival-food.png` | 1536 × 1024 | `festival-food.webp` and 768/1280-width variants |
-| `source/festival-culture.png` | 1536 × 1024 | `festival-culture.webp` and 768/1280-width variants |
-| `source/festival-community.png` | 1536 × 1024 | `festival-community.webp` and 768/1280-width variants |
-
-WebP delivery files use quality 94 encoding. Smaller variants are downsampled from the native master; no image has been artificially enlarged. The HTML `sizes` hints account for cover-cropping so high-density displays select sufficient source pixels. Images below the first screen are lazy-loaded. Native dimensions reserve layout space.
-
-The PNG masters total 14,814,489 bytes; the five full-size WebP delivery images total 2,950,600 bytes. Responsive variants can reduce transfer further. PNG masters are retained for future editing and are not loaded by the website.
-
-## Generation briefs
-
-**Hero:** Production website hero background inspired by the supplied ImpactAir phone mockups, using scenery and billboard style only. Landscape Toronto CN Tower skyline at blue/pink sunset, white festival tents, warm string lights and a lively crowd. Upright navy inflatable billboard on the right, small white/cyan IMPACTAIR branding, exact white “YOUR / BRAND / HERE” lettering and an orange swoosh. Open dark-blue sky at left for live HTML text. Crisp photographic advertising concept; no phone frame, interface, buttons, watermark or text outside the billboard.
-
-**Music:** High-resolution landscape promotional concert scene with purple, cyan and golden stage lights, an enthusiastic outdoor crowd, dusk skyline and CN Tower. Crisp stage and crowd detail. No interface, overlaid words, watermark or logos.
-
-**Food:** High-resolution landscape food festival with white tents, food stalls, warm string lights and diverse visitors, in a sunset Toronto setting. Detailed natural promotional concept imagery; no interface, overlaid words, watermark or logos.
-
-**Culture:** High-resolution landscape Caribbean carnival scene with adult performers in turquoise, red, yellow and gold feathered costumes, in a bright daytime festival setting. Detailed natural promotional concept imagery; no interface, overlaid words, watermark or logos.
-
-**Community:** High-resolution landscape community festival with families and friends, white tents in a green Ontario park, blue sky and Toronto skyline. Detailed natural promotional concept imagery; no interface, overlaid words, watermark or logos.
-
-## Other assets
-
-Existing `design-*` and other historical assets remain available to the retained resource pages. Shared icons and the favicon are SVG. The shared site design uses the local Latin subset of DejaVu Sans Condensed Bold Oblique in `impact-display.woff`. About uses that shared header unchanged and loads `about-icons.svg`, `about-display.woff` and `about-headings.woff` for its reference-matched body. The font license is included in `fonts/DejaVu-LICENSE.txt`. Typography, controls and branding remain live/vector elements, preserving clarity at browser zoom and on high-density displays.
+Campaign statistics and event names reproduce the supplied copy and are not independently verified audience or schedule data. Technical dimensions follow the Artwork Specifications reference: 40 ft × 22 ft with a 35.43 ft × 15.74 ft safe area, and 20 ft × 20 ft with a 17.72 ft × 14.31 ft safe area. Benefits uses the same 40 ft × 22 ft overall dimensions for consistency.

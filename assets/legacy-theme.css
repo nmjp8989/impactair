@@ -4,16 +4,13 @@
 body:not(.modern-site){background:var(--navy);color:#fff}
 body:not(.modern-site) .brand{height:auto;min-width:0;padding:0}
 body:not(.modern-site) .brand::before,body:not(.modern-site) .brand::after{display:none}
-body:not(.modern-site) .brand span{border:0;padding:8px 7px 8px 0;transform:none;text-shadow:none;line-height:1.25;letter-spacing:-.1em}
 body:not(.modern-site) .brand b{color:var(--cyan)}
-body:not(.modern-site) .site-header{border-bottom:1px solid #a1eaff24}
 body:not(.modern-site) main h1{font-size:clamp(2.2rem,4.3vw,4rem);letter-spacing:-.065em;line-height:1.1}
 body:not(.modern-site) main em{color:var(--cyan)}
 body:not(.modern-site) main .card{color:var(--navy)}
 body:not(.modern-site) main .card h2{font-size:1.4rem}
 body:not(.modern-site) main .feature-grid .icon{color:var(--orange)}
 body:not(.modern-site) main .ribbon::after{background:var(--orange)}
-body:not(.modern-site) .button .icon{display:none}
+body:not(.modern-site) main .button .icon{display:none}
 body:not(.modern-site) main .feature-grid span{font-size:.95rem}
-body:not(.modern-site) .site-footer .brand span{font-size:1.65rem}
 @media(max-width:960px){body:not(.modern-site) .site-nav[data-collapsed=true]{display:none}}

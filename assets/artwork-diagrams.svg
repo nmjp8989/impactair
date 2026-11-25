@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tube" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#397aa7"/><stop offset=".12" stop-color="#163a59"/><stop offset=".43" stop-color="#001329"/><stop offset=".72" stop-color="#092844"/><stop offset="1" stop-color="#000715"/></linearGradient>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0079ac"/><stop offset=".5" stop-color="#07518d"/><stop offset="1" stop-color="#003777"/></linearGradient>
+    <radialGradient id="shadow"><stop stop-color="#001021" stop-opacity=".5"/><stop offset="1" stop-color="#001021" stop-opacity="0"/></radialGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M8 4 0 0v8Z" fill="#00102e"/></marker>
+  </defs>
+  <symbol id="wide" viewBox="0 0 600 450">
+    <g font-family="Arial,Helvetica,sans-serif" font-style="italic" font-weight="800" text-anchor="middle" fill="#00102e">
+      <text x="330" y="47" font-size="29">40′ W</text><text x="36" y="229" font-size="28">22′ H</text>
+      <g fill="none" stroke="#00102e" stroke-width="2.3"><path d="M88 64H572" marker-start="url(#arrow)" marker-end="url(#arrow)"/><path d="M80 53v22m500-22v22M32 105h22M32 380h22"/><path d="M43 114V192" marker-start="url(#arrow)"/><path d="M43 252V371" marker-end="url(#arrow)"/></g>
+      <ellipse cx="329" cy="402" rx="270" ry="27" fill="url(#shadow)"/>
+      <!-- The frame is 500 × 275, preserving the 40:22 trim proportions. -->
+      <rect x="80" y="105" width="500" height="275" rx="29" fill="url(#tube)" stroke="#00101f" stroke-width="2"/>
+      <rect x="86" y="109" width="488" height="266" rx="25" fill="none" stroke="#9cc3dc" stroke-opacity=".45"/>
+      <rect x="105" y="132" width="450" height="220" rx="4" fill="url(#surface)" stroke="#000d24" stroke-width="7"/>
+      <g stroke="#001327" fill="none" stroke-width="2" opacity=".8"><path d="M120 106v24m42-24v24m42-24v24m42-24v24m42-24v24m42-24v24m42-24v24m42-24v24m42-24v24m42-24v24m40-24v24M80 155h23m-23 40h23m-23 40h23m-23 40h23m-23 40h23m455-160h22m-22 40h22m-22 40h22m-22 40h22m-22 40h22M109 351l-19 19m463-19 17 19"/></g>
+      <!-- 35.43/40 × 500 by 15.74/22 × 275: exact safe-area proportion. -->
+      <rect x="108.56" y="144.13" width="442.88" height="196.75" rx="1" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="12 7"/>
+      <text x="330" y="222" font-size="29" fill="#fff">SAFE AREA</text><text x="330" y="270" font-size="34" fill="#fff">35.43′ W × 15.74′ H</text>
+    </g>
+  </symbol>
+  <symbol id="square" viewBox="0 0 400 450">
+    <g font-family="Arial,Helvetica,sans-serif" font-style="italic" font-weight="800" text-anchor="middle" fill="#00102e">
+      <text x="225" y="45" font-size="29">20′ W</text><text x="36" y="228" font-size="28">20′ H</text>
+      <g fill="none" stroke="#00102e" stroke-width="2.3"><path d="M90 64H361" marker-start="url(#arrow)" marker-end="url(#arrow)"/><path d="M82 54v21m287-21v21M32 102h22M32 389h22"/><path d="M43 111V192" marker-start="url(#arrow)"/><path d="M43 251V380" marker-end="url(#arrow)"/></g>
+      <ellipse cx="223" cy="402" rx="176" ry="27" fill="url(#shadow)"/>
+      <rect x="82" y="102" width="287" height="287" rx="25" fill="url(#tube)" stroke="#00101f" stroke-width="2"/>
+      <rect x="87" y="107" width="277" height="277" rx="22" fill="none" stroke="#9cc3dc" stroke-opacity=".45"/>
+      <rect x="94" y="130" width="263" height="231" rx="4" fill="url(#surface)" stroke="#000d24" stroke-width="4"/>
+      <g stroke="#001327" fill="none" stroke-width="2" opacity=".8"><path d="M120 103v25m40-25v25m40-25v25m40-25v25m40-25v25m40-25v25M83 155h18m-18 40h18m-18 40h18m-18 40h18m-18 40h18m249-160h17m-17 40h17m-17 40h17m-17 40h17m-17 40h17M102 360l-13 20m259-20 12 20"/></g>
+      <rect x="98.36" y="142.83" width="254.28" height="205.35" rx="1" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="10 6"/>
+      <text x="225" y="219" font-size="28" fill="#fff">SAFE AREA</text><text x="225" y="260" font-size="25" fill="#fff">17.72′ W × 14.31′ H</text>
+    </g>
+  </symbol>
+</svg>

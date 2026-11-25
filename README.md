@@ -1,41 +1,46 @@
 # IMPACTAIR
 
-The default IMPACTAIR website, based on the supplied eleven-page mobile design package. About Us matches the separately supplied desktop reference’s content, photography, body typography and cards, while keeping the existing site logo and navigation unchanged. Its top hero and closing call to action span the full page width; the responsive middle content is capped at 1440 px. The About page ends with its closing call to action and does not render a footer.
+Static, responsive website implementing the eleven supplied desktop page designs: Home, About Us, Benefits, Why Festivals, 2027 Festival Opportunities, Festival Categories, Contact Us, Careers, Privacy Policy, Terms of Use and Artwork Specifications. Headings, copy, controls and diagrams are HTML/SVG; CSS selects photographic regions from the original reference artwork.
 
-## Publishing
+All **19 routes** share the same logo and navigation, including the Solutions, Festivals and More dropdowns. The eight retained resource routes are `advertising-solutions.html`, `billboard-specifications.html`, `case-studies.html`, `faq.html`, `festivals-events.html`, `for-advertising-agencies.html`, `gallery.html` and `rental-options.html`. Their existing content and interactions, including gallery filtering and previews, remain available.
 
-GitHub Pages serves the repository’s `main` branch at `/` (root). `index.html` is the default homepage. All pages, styles, scripts, fonts and images are local static files; no package installation or server runtime is required.
+## Build and publish
 
-## Pages
+```sh
+python scripts/build_site.py
+```
 
-The primary experience contains Home, About Us, Benefits, Festivals & Events, 2027 Festival Opportunities, Festival Categories, Contact Us, Careers, Privacy Policy, Terms of Use and Artwork Specifications. Existing resource URLs are retained, including the gallery and its filters, rental options, case studies, agency information and FAQ.
+The generator requires only Python's standard library. It writes the eleven reference pages, refreshes the shared header/footer on the eight retained routes, versions stylesheet/script URLs, and copies the site into an ignored `dist/` directory for preview. Commit the source changes and generated root HTML together.
 
-## Editing
+GitHub Pages serves the repository's `main` branch from `/` (root), with `index.html` as the homepage, at https://nmjp8989.github.io/impactair/. Deployment needs no package installation, application server or additional build step.
 
-- `scripts/main_pages.py`: primary-page content, with About Us overridden by its dedicated reference module.
-- `scripts/about_reference.py`: the exact About Us reference copy, statistics and page structure.
-- `scripts/support_pages.py`: contact, careers, privacy, terms and artwork content.
-- `scripts/build_site.py`: common accessible header, footer, metadata and static HTML generation.
-- `assets/impactair.css` and `assets/impactair.js`: the current design and interactions.
-- `assets/about-reference.css`: the active reference-matched About body, with styles scoped to that page’s content so they do not alter the shared logo, header or navigation.
-- `assets/site.css`, `assets/site.js` and `assets/legacy-theme.css`: retained resources and their matching theme.
+## Source map
 
-After changing content or shared templates, run `python scripts/build_site.py` and commit the generated HTML along with the source changes. The generator versions shared CSS/JavaScript URLs, the About stylesheet and About HTML navigation links so updated content does not reuse stale cached styling or page responses. The command also prepares an ignored `dist/` directory for local preview; GitHub Pages uses the root HTML files. Rebuilding requires only Python’s standard library. There is no required build step on deployment.
+| Source | Responsibility |
+| --- | --- |
+| `scripts/build_site.py` | Shared navigation, footer, metadata, asset versioning and generation |
+| `scripts/design_common.py` | Reference photo crops, heroes, buttons, statistics and ribbons |
+| `scripts/home_benefits_reference.py` | Home and Benefits |
+| `scripts/about_reference.py` | Preserved approved About composition and copy |
+| `scripts/festival_reference.py` | Why Festivals, 2027 Opportunities and Festival Categories |
+| `scripts/support_reference.py` | Contact, Careers, Privacy, Terms and Artwork Specifications |
+| `assets/reference-pages.css` | Shared reference styling and consistent navigation across all routes |
+| `assets/*-reference.css` | Page-specific reference layouts and responsive reflow |
+| `assets/impactair.css`, `assets/impactair.js` | Base styling, navigation and enquiry behavior for the eleven generated pages |
+| `assets/site.css`, `assets/site.js`, `assets/legacy-theme.css` | Retained resource styling and behavior |
 
-## Images and type
+`scripts/main_pages.py` and `scripts/support_pages.py` retain the earlier base definitions; the reference modules override their page content in the build. Edit the active reference module for these eleven pages.
 
-The attachment’s small mobile previews are design references, not embedded website pages. Text, navigation and controls are live HTML; icons and the favicon are SVG. A compact, locally hosted display font keeps headings sharp at any zoom level. Its license is in `assets/fonts/`.
+## Artwork and responsive behavior
 
-Production hero and festival art are larger original assets matching the supplied visual direction. Avoid enlarging thumbnails or resaving images at low quality. All image elements have intrinsic dimensions, descriptive alternate text where needed, and deferred loading below the first screen.
+The eleven 1024 × 1536 source PNGs in `assets/references/` are unchanged copies of the supplied designs. They are used as photographic source sheets, not flattened complete webpages. Native text, SVG icons and vector measurement diagrams stay sharp at browser zoom; photographic detail remains limited to the pixels in the supplied artwork. No higher-resolution photo source is implied by displaying a crop at a larger size. See `assets/ASSETS.md` for provenance and URL/cropping conventions.
 
-The original About Us artwork is preserved in `assets/source/about-reference.png` and delivered through the pixel-identical, lossless `assets/about-reference.webp`. CSS selects its photographic regions while the exact supplied text and statistics remain live HTML. Dedicated local body fonts and SVG icons reproduce the reference treatment without changing the shared header. The middle `.about-ref-content` container has a 1440 px maximum width and adapts for mobile; the hero and closing call to action remain outside that cap. See `assets/ASSETS.md` for provenance and delivery details.
+The approved About body is preserved, including its full-width hero and closing call to action, 1440 px middle-content cap, mobile reflow, local fonts and pixel-identical lossless WebP source. It uses the same shared header as the other routes.
 
-## Enquiries and content
+## Enquiries and supplied content
 
-The quote form prepares an email draft to the existing `info@impactair.ca` address. The visitor reviews and sends the draft in their email application; the website does not claim to submit messages to a backend. Festival enquiry links prefill the relevant campaign topic. No analytics, advertising cookies or external font service are included.
+The contact form validates the required fields and opens an email draft to `info@impactair.ca`. The visitor reviews and sends it in their email application; there is no form-submission backend. Festival links prefill the selected topic. Careers and artwork submission also use email links. The mockup's fixture phone number and unprovided social-profile links are omitted. Request Full Festival List opens a relevant enquiry rather than presenting an invented event schedule.
 
-The ZIP describes its contact information and event dates as illustrative. The other pages omit placeholder telephone numbers and unconfirmed festival dates; the 2027 pages invite proposals with current availability rather than treating the ZIP’s sample event list or audience totals as verified data.
+The **50 Festivals**, **7 Million People** and **June–September 2027** campaign figures, featured event names and policy copy come from the supplied designs. They were not independently verified as part of implementation. No analytics, advertising cookies or external font service are included.
 
-At the user’s explicit request, About Us reproduces the separately supplied desktop reference’s copy and statistics: **50 Festivals**, **7 Million People**, and **June–September 2027**. These figures come directly from that reference; they were not independently verified as part of the website implementation.
-
-Careers describe expressions of interest rather than confirmed vacancies. Artwork dimensions from the design are marked as layout references requiring the final production template. Existing case-study concepts remain identified as concepts.
+The large billboard is consistently described as **40 ft × 22 ft**, following the Artwork Specifications reference and resolving the Benefits mockup's conflicting 40 ft × 20 ft label. The second format is **20 ft × 20 ft**. Their respective safe areas are **35.43 ft × 15.74 ft** and **17.72 ft × 14.31 ft**; the page presents these dimensions as native text and SVG.

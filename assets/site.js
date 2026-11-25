@@ -1,41 +1,52 @@
+'use strict';
+
 const menu = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#site-nav');
+const moreMenus = [...(navigation?.querySelectorAll('.more') || [])];
 const compact = matchMedia('(max-width: 960px)');
-const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-const more = navigation.querySelector('.more');
 
 function setMenu(expanded) {
+  if (!menu || !navigation) return;
   menu.setAttribute('aria-expanded', String(expanded));
+  menu.setAttribute('aria-label', expanded ? 'Close navigation' : 'Open navigation');
   navigation.dataset.collapsed = String(!expanded);
 }
 
 function updateNavigation() {
+  if (!menu) return;
   menu.hidden = !compact.matches;
-  more.open = false;
+  for (const more of moreMenus) more.open = false;
   setMenu(!compact.matches);
 }
 
-menu.addEventListener('click', () => {
-  setMenu(menu.getAttribute('aria-expanded') !== 'true');
-  if (navigation.dataset.collapsed === 'true') more.open = false;
+menu?.addEventListener('click', () => {
+  const expanded = menu.getAttribute('aria-expanded') !== 'true';
+  setMenu(expanded);
+  if (!expanded) for (const more of moreMenus) more.open = false;
 });
 compact.addEventListener('change', updateNavigation);
 updateNavigation();
 
 document.addEventListener('click', (event) => {
-  if (more.open && !more.contains(event.target)) more.open = false;
-  if (compact.matches && !navigation.contains(event.target) && !menu.contains(event.target)) setMenu(false);
+  for (const more of moreMenus) {
+    if (more.open && !more.contains(event.target)) more.open = false;
+  }
+  if (compact.matches && navigation && menu && !navigation.contains(event.target) && !menu.contains(event.target)) setMenu(false);
 });
+
 document.addEventListener('keydown', (event) => {
   if (event.key !== 'Escape') return;
-  if (more.open) {
+  const more = moreMenus.find(item => item.open);
+  if (more) {
     more.open = false;
     more.querySelector('summary').focus();
-  } else if (compact.matches && menu.getAttribute('aria-expanded') === 'true') {
+  } else if (compact.matches && menu?.getAttribute('aria-expanded') === 'true') {
     setMenu(false);
     menu.focus();
   }
 });
+
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
 if ('IntersectionObserver' in window && 'animate' in Element.prototype) {
   const revealObserver = new IntersectionObserver((entries) => {
